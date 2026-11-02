@@ -1,0 +1,34 @@
+{
+	"Unitaid": {
+		"metadata": {
+			"title": "Unitaid | Global Malaria Dashboard",
+			"description": "Tableau de bord Unitaid : indicateurs d'exemple par pays et par année.",
+			"keywords": "Global Malaria Dashboard, RBM Partnership to End Malaria, Paludisme, Tableau de bord, Unitaid, UNOPS"
+		},
+		"title": "Unitaid",
+		"subtitle": "Tableau de bord d'exemple construit dans le bac à sable. Remplacez ce contenu par le module réel.",
+		"chart": {
+			"title": "Indicateur d'exemple par pays",
+			"yAxis": "Valeur"
+		},
+		"summary": {
+			"title": "Résumé",
+			"totalLabel": "Somme de toutes les valeurs du jeu de données"
+		},
+		"source": {
+			"label": "Source",
+			"remote": "source externe",
+			"fallback": "échantillon intégré"
+		},
+		"states": {
+			"loading": "Chargement des données…",
+			"error": "Impossible de charger les données.",
+			"retry": "Réessayer"
+		},
+		"localeNote": "Langue actuelle : {locale}"
+	},
+	"Sidebar": {
+		"partners_subitem_unitaid": "Unitaid",
+		"partners_subitem_unitaid_tooltip": "Tableau de bord Unitaid : indicateurs d'exemple par pays et par année"
+	}
+}

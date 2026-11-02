@@ -1,11 +1,11 @@
 {
 	"$comment": "Single source of truth for the module identity. Edit only through `npm run module:init` (internal team).",
-	"slug": "example-module",
-	"namespace": "ExampleModule",
-	"envPrefix": "EXAMPLE_MODULE_",
+	"slug": "unitaid",
+	"namespace": "Unitaid",
+	"envPrefix": "UNITAID_",
 	"templateRepo": "rbm-data-initiative/rbm-dashboard-sandbox",
 	"owners": {
 		"internal": "@rbm-data-initiative/rbm-dashboard-maintainers",
-		"external": "@rbm-data-initiative/rbm-dashboard-maintainers"
+		"external": "@rbm-data-initiative/rbm-module-unitaid"
 	}
 }

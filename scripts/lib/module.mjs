@@ -121,14 +121,14 @@ export function buildConfig({ slug, namespace, envPrefix, templateRepo, owners }
 export function validateConfig(cfg) {
 	const errors = [];
 	if (!SLUG_RE.test(cfg.slug ?? "")) {
-		errors.push(`slug "${cfg.slug}" must be kebab-case (e.g. "example-module", "malaria-atlas")`);
+		errors.push(`slug "${cfg.slug}" must be kebab-case (e.g. "unitaid", "malaria-atlas")`);
 	}
 	if (!NAMESPACE_RE.test(cfg.namespace ?? "")) {
-		errors.push(`namespace "${cfg.namespace}" must be PascalCase (e.g. "ExampleModule")`);
+		errors.push(`namespace "${cfg.namespace}" must be PascalCase (e.g. "Unitaid")`);
 	}
 	if (!ENV_PREFIX_RE.test(cfg.envPrefix ?? "")) {
 		errors.push(
-			`envPrefix "${cfg.envPrefix}" must be UPPER_SNAKE ending with "_" (e.g. "EXAMPLE_MODULE_")`,
+			`envPrefix "${cfg.envPrefix}" must be UPPER_SNAKE ending with "_" (e.g. "UNITAID_")`,
 		);
 	}
 	if (cfg.templateRepo && !REPO_RE.test(cfg.templateRepo)) {
@@ -181,11 +181,11 @@ const isAlnum = (ch) => /[A-Za-z0-9]/.test(ch ?? "");
 /**
  * Returns a function that rewrites every spelling of the `from` identity into
  * the `to` identity, in paths and in text:
- *   EXAMPLE_MODULE_            -> <to.envPrefix>
- *   ExampleModule             -> <to.namespace>        (also inside useExampleModuleDataset)
- *   example-module / camelSlug -> <to.slug>, camel or snake:
- *                          camel when glued to an identifier (__exampleModuleStore),
- *                          snake when glued to "_" (partners_subitem_example_module),
+ *   UNITAID_            -> <to.envPrefix>
+ *   Unitaid             -> <to.namespace>        (also inside useUnitaidDataset)
+ *   unitaid / camelSlug -> <to.slug>, camel or snake:
+ *                          camel when glued to an identifier (__unitaidStore),
+ *                          snake when glued to "_" (partners_subitem_unitaid),
  *                          kebab otherwise (paths, CSS classes, URLs, tags)
  */
 export function makeRenamer(from, to) {

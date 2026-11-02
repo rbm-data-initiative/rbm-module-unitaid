@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
     inputs:
       module_repo:
-        description: Team repository (owner/name), e.g. UNOPS/rbm-module-example-module
+        description: Team repository (owner/name), e.g. UNOPS/rbm-module-unitaid
         required: true
       ref:
         description: Delivered tag (e.g. v1.0.0) or commit

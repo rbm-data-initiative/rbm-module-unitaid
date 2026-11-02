@@ -3,12 +3,12 @@ import { getRequestConfig } from "next-intl/server";
 import { locales, defaultLocale, type AppLocale } from "./config";
 
 // Shell messages (messages/<locale>.json) are merged with the module's own
-// messages (src/app/[locale]/example-module/i18n/<locale>.json). The module files
+// messages (src/app/[locale]/unitaid/i18n/<locale>.json). The module files
 // are exactly what the host maintainers merge into their messages/*.json.
 const MODULE_MESSAGES: Record<AppLocale, () => Promise<{ default: Messages }>> = {
-	en: () => import("./app/[locale]/example-module/i18n/en.json"),
-	fr: () => import("./app/[locale]/example-module/i18n/fr.json"),
-	pt: () => import("./app/[locale]/example-module/i18n/pt.json"),
+	en: () => import("./app/[locale]/unitaid/i18n/en.json"),
+	fr: () => import("./app/[locale]/unitaid/i18n/fr.json"),
+	pt: () => import("./app/[locale]/unitaid/i18n/pt.json"),
 };
 
 type Messages = AbstractIntlMessages;

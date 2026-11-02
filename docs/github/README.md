@@ -15,7 +15,7 @@ How the internal team creates and protects one sandbox repository per external t
    git commit -am "chore: init module <slug>" && git push
    ```
 
-   `module:init` renames every spelling of the placeholder module identity (`example-module`, `ExampleModule`, `EXAMPLE_MODULE_`), writes `module.config.json` and `.github/CODEOWNERS`, and regenerates the protected-files manifest. It prints the manifest hash used in step 3. The sample page, API routes and i18n texts are starter content for the team to replace.
+   `module:init` renames every spelling of the placeholder module identity (`unitaid`, `Unitaid`, `UNITAID_`), writes `module.config.json` and `.github/CODEOWNERS`, and regenerates the protected-files manifest. It prints the manifest hash used in step 3. The sample page, API routes and i18n texts are starter content for the team to replace.
 
 ## 2. Access
 

@@ -4,6 +4,6 @@
 
 *                                   @rbm-data-initiative/rbm-dashboard-maintainers
 
-/src/app/*/example-module/          @rbm-data-initiative/rbm-dashboard-maintainers
-/src/app/api/example-module/        @rbm-data-initiative/rbm-dashboard-maintainers
-/public/example-module/             @rbm-data-initiative/rbm-dashboard-maintainers
+/src/app/*/unitaid/                 @rbm-data-initiative/rbm-module-unitaid
+/src/app/api/unitaid/               @rbm-data-initiative/rbm-module-unitaid
+/public/unitaid/                    @rbm-data-initiative/rbm-module-unitaid

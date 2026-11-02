@@ -2,7 +2,7 @@
 
 Minimal Next.js project that reproduces the setup of the Global Malaria Dashboard (RBM Partnership to End Malaria / UNOPS) so that an external team can develop **one module** that will later be copied into the main project.
 
-This repository is a **GitHub template**. Each external team gets its own repository created from it (`rbm-module-<slug>`), configured by the internal team as described in [docs/github/](docs/github/README.md). The module identity (slug, i18n namespace, env prefix, owners) lives in [`module.config.json`](module.config.json). In the template the module is the placeholder `example-module`, owned by the internal team on both sides of `CODEOWNERS`; `module:init` replaces it with the team's slug and owners.
+This repository is a **GitHub template**. Each external team gets its own repository created from it (`rbm-module-<slug>`), configured by the internal team as described in [docs/github/](docs/github/README.md). The module identity (slug, i18n namespace, env prefix, owners) lives in [`module.config.json`](module.config.json). In the template the module is the placeholder `unitaid`, owned by the internal team on both sides of `CODEOWNERS`; `module:init` replaces it with the team's slug and owners.
 
 Full guide of rules and structure: [Integration guidelines — External dashboard](LINK_TO_DOC).
 
@@ -15,9 +15,9 @@ Full guide of rules and structure: [Integration guidelines — External dashboar
 
 ```bash
 npm ci
-cp "src/app/[locale]/example-module/.env.example" .env.local
+cp "src/app/[locale]/unitaid/.env.example" .env.local
 npm run dev
-# http://localhost:3000/en/example-module  (also /fr/example-module and /pt/example-module)
+# http://localhost:3000/en/unitaid  (also /fr/unitaid and /pt/unitaid)
 ```
 
 ## Where to code
@@ -25,12 +25,12 @@ npm run dev
 Only these three folders belong to the external team; everything else is the "host" and is protected:
 
 ```
-src/app/[locale]/example-module/   # page, components, hooks, services, lib (server-only), types, i18n, docs
-src/app/api/example-module/        # API routes: data (GET proxy) and notifications (POST)
-public/example-module/             # static assets of the module
+src/app/[locale]/unitaid/   # page, components, hooks, services, lib (server-only), types, i18n, docs
+src/app/api/unitaid/        # API routes: data (GET proxy) and notifications (POST)
+public/unitaid/             # static assets of the module
 ```
 
-Read `src/app/[locale]/example-module/README.md` for the responsibility of each subfolder.
+Read `src/app/[locale]/unitaid/README.md` for the responsibility of each subfolder.
 
 ## What not to touch
 
@@ -40,7 +40,7 @@ Pull requests that touch protected files require approval from the internal team
 
 ### New dependencies
 
-The external team cannot add, remove or change the version of any package by itself. `package.json` is protected and `scripts/approved-dependencies.json` is the allow list. Need a library (UI kit, parser, chart type)? Record name, version and justification in section 4 of `src/app/[locale]/example-module/INTEGRATION.md` and agree with the internal team, who adds it, re-snapshots and opens the pull request. The same package also has to enter the main project, which is why approval happens first.
+The external team cannot add, remove or change the version of any package by itself. `package.json` is protected and `scripts/approved-dependencies.json` is the allow list. Need a library (UI kit, parser, chart type)? Record name, version and justification in section 4 of `src/app/[locale]/unitaid/INTEGRATION.md` and agree with the internal team, who adds it, re-snapshots and opens the pull request. The same package also has to enter the main project, which is why approval happens first.
 
 ## Validation (local and CI)
 

@@ -1,0 +1,34 @@
+{
+	"Unitaid": {
+		"metadata": {
+			"title": "Unitaid | Global Malaria Dashboard",
+			"description": "Dashboard Unitaid: indicadores de exemplo por país e ano.",
+			"keywords": "Global Malaria Dashboard, RBM Partnership to End Malaria, Malária, Dashboard, Unitaid, UNOPS"
+		},
+		"title": "Unitaid",
+		"subtitle": "Dashboard de exemplo construído no sandbox. Substitua este conteúdo pelo módulo real.",
+		"chart": {
+			"title": "Indicador de exemplo por país",
+			"yAxis": "Valor"
+		},
+		"summary": {
+			"title": "Resumo",
+			"totalLabel": "Soma de todos os valores do conjunto de dados"
+		},
+		"source": {
+			"label": "Fonte",
+			"remote": "fonte externa",
+			"fallback": "amostra incluída"
+		},
+		"states": {
+			"loading": "Carregando dados…",
+			"error": "Não foi possível carregar os dados.",
+			"retry": "Tentar novamente"
+		},
+		"localeNote": "Idioma atual: {locale}"
+	},
+	"Sidebar": {
+		"partners_subitem_unitaid": "Unitaid",
+		"partners_subitem_unitaid_tooltip": "Dashboard Unitaid: indicadores de exemplo por país e ano"
+	}
+}

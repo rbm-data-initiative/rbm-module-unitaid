@@ -1,0 +1,8 @@
+/* Module-scoped styles. Every selector is prefixed with .unitaid- to avoid
+   collisions with the host project's global CSS. Prefer Tailwind utilities;
+   use this file only for what utilities cannot express. */
+.unitaid-card {
+	border-radius: 0.75rem;
+	background: #ffffff;
+	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}

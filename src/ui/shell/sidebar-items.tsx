@@ -23,10 +23,10 @@ export const SIDEBAR_ITEMS: SidebarNavigationItem[] = [
 		tooltipTranslationKey: "home_tooltip",
 	},
 	{
-		href: "/example-module",
+		href: "/unitaid",
 		icon: <Activity size={18} />,
-		translationKey: "partners_subitem_example_module",
-		tooltipTranslationKey: "partners_subitem_example_module_tooltip",
+		translationKey: "partners_subitem_unitaid",
+		tooltipTranslationKey: "partners_subitem_unitaid_tooltip",
 		tag: "New",
 	},
 ];
