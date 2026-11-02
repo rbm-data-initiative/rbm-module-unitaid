@@ -1,0 +1,91 @@
+# Copy to .github/workflows/import-module.yml in the Global Malaria Dashboard
+# repository. Run by the internal team when an external team tags a release.
+#
+# Secrets in the MAIN repository only:
+#   MODULE_IMPORT_TOKEN  read-only access to the rbm-module-* repositories
+#                        (fine-grained PAT or GitHub App installation token).
+# Team repositories never hold credentials for this repository.
+
+name: Import external module
+
+on:
+  workflow_dispatch:
+    inputs:
+      module_repo:
+        description: Team repository (owner/name), e.g. UNOPS/rbm-module-example-module
+        required: true
+      ref:
+        description: Delivered tag (e.g. v1.0.0) or commit
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main repository
+        uses: actions/checkout@v4
+
+      - name: Checkout module repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.module_repo }}
+          ref: ${{ inputs.ref }}
+          path: .module-import
+          token: ${{ secrets.MODULE_IMPORT_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Verify the delivery against its own contract
+        working-directory: .module-import
+        run: |
+          npm ci
+          npm run check:contract
+
+      - name: Read module identity
+        id: mod
+        run: echo "slug=$(node -p 'require("./.module-import/module.config.json").slug')" >> "$GITHUB_OUTPUT"
+
+      - name: Import module files
+        run: |
+          node scripts/import-module.mjs --from .module-import | tee import-report.md
+          cp ".module-import/src/app/[locale]/${{ steps.mod.outputs.slug }}/INTEGRATION.md" integration.md
+          rm -rf .module-import
+
+      - name: Verify main repository
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+
+      - name: Compose pull request body
+        id: body
+        run: |
+          {
+            echo 'body<<PR_BODY_EOF'
+            echo "Imported from \`${{ inputs.module_repo }}\` at \`${{ inputs.ref }}\`."
+            echo
+            cat import-report.md
+            echo
+            echo '---'
+            echo
+            cat integration.md
+            echo 'PR_BODY_EOF'
+          } >> "$GITHUB_OUTPUT"
+          rm -f import-report.md integration.md
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: module/${{ steps.mod.outputs.slug }}/${{ inputs.ref }}
+          title: "feat(${{ steps.mod.outputs.slug }}): import ${{ inputs.ref }} from ${{ inputs.module_repo }}"
+          commit-message: "feat(${{ steps.mod.outputs.slug }}): import ${{ inputs.ref }} from ${{ inputs.module_repo }}"
+          body: ${{ steps.body.outputs.body }}
+          labels: external-module

@@ -1,0 +1,34 @@
+{
+	"ExampleModule": {
+		"metadata": {
+			"title": "ExampleModule | Global Malaria Dashboard",
+			"description": "ExampleModule dashboard: sample indicators by country and year.",
+			"keywords": "Global Malaria Dashboard, RBM Partnership to End Malaria, Malaria, Dashboard, ExampleModule, UNOPS"
+		},
+		"title": "ExampleModule",
+		"subtitle": "Sample dashboard built in the sandbox. Replace this content with the real module.",
+		"chart": {
+			"title": "Sample indicator by country",
+			"yAxis": "Value"
+		},
+		"summary": {
+			"title": "Summary",
+			"totalLabel": "Sum of all values in the dataset"
+		},
+		"source": {
+			"label": "Source",
+			"remote": "external source",
+			"fallback": "bundled sample"
+		},
+		"states": {
+			"loading": "Loading data…",
+			"error": "Could not load the data.",
+			"retry": "Try again"
+		},
+		"localeNote": "Current locale: {locale}"
+	},
+	"Sidebar": {
+		"partners_subitem_example_module": "ExampleModule",
+		"partners_subitem_example_module_tooltip": "ExampleModule dashboard: sample indicators by country and year"
+	}
+}

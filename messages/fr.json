@@ -1,0 +1,13 @@
+{
+	"Sidebar": {
+		"home": "Accueil",
+		"home_tooltip": "Page d'accueil du bac à sable",
+		"searchPlaceholder": "Rechercher"
+	},
+	"header": {
+		"en": "Anglais",
+		"fr": "Français",
+		"pt": "Portugais",
+		"hostedBy": "Hébergé par l'UNOPS"
+	}
+}

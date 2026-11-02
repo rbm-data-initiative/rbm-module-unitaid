@@ -1,0 +1,82 @@
+name: Sync host from template
+
+# Internal team only. Pulls the host (non-module) files from the template
+# repository, re-applies this module's identity and opens a pull request.
+# The template repository comes from module.config.json ("templateRepo").
+#
+# Private template: add a repository secret HOST_SYNC_TOKEN (fine-grained PAT
+# or GitHub App token with read access to the template). Public template: the
+# default token is enough.
+
+on:
+  workflow_dispatch:
+    inputs:
+      template_ref:
+        description: Branch or tag of the template to sync from
+        required: true
+        default: main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      - name: Read template repository from module.config.json
+        id: cfg
+        run: |
+          repo="$(node -p 'require("./module.config.json").templateRepo')"
+          if [ -z "$repo" ] || [ "$repo" = "undefined" ]; then
+            echo "module.config.json has no templateRepo" >&2; exit 1
+          fi
+          echo "repo=$repo" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout template
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.cfg.outputs.repo }}
+          ref: ${{ inputs.template_ref }}
+          path: .host-template
+          token: ${{ secrets.HOST_SYNC_TOKEN || github.token }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Sync host files
+        id: sync
+        run: |
+          node scripts/sync-host.mjs --from .host-template | tee sync.log
+          echo "hash=$(node scripts/check-contract.mjs --manifest-hash)" >> "$GITHUB_OUTPUT"
+          rm -rf .host-template
+
+      - name: Verify
+        run: |
+          npm ci
+          npm run lint
+          npm run format:check
+          npm run check:contract
+          npm run build
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/sync-host-${{ inputs.template_ref }}
+          title: "chore: sync host files from template@${{ inputs.template_ref }}"
+          commit-message: "chore: sync host files from ${{ steps.cfg.outputs.repo }}@${{ inputs.template_ref }}"
+          body: |
+            Host files synced from `${{ steps.cfg.outputs.repo }}` at `${{ inputs.template_ref }}` by `scripts/sync-host.mjs`.
+
+            After merging, set the repository variable `PROTECTED_MANIFEST_SHA256` to:
+
+            ```
+            ${{ steps.sync.outputs.hash }}
+            ```
+          labels: host-sync

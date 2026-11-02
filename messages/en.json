@@ -1,0 +1,13 @@
+{
+	"Sidebar": {
+		"home": "Home",
+		"home_tooltip": "Sandbox home page",
+		"searchPlaceholder": "Search"
+	},
+	"header": {
+		"en": "English",
+		"fr": "French",
+		"pt": "Portuguese",
+		"hostedBy": "Hosted by UNOPS"
+	}
+}

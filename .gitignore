@@ -1,0 +1,26 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# env files (never commit real values)
+.env
+.env*.local
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# misc
+.DS_Store
+npm-debug.log*
+yarn-error.log*
+/.idea/
+/.vscode/*
+!/.vscode/settings.json
+
+# template checkout used by scripts/sync-host.mjs
+/.host-template/
+sync.log
