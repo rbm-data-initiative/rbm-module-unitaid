@@ -6,7 +6,12 @@
 			"keywords": "Global Malaria Dashboard, RBM Partnership to End Malaria, Malária, Dashboard, Unitaid, UNOPS"
 		},
 		"title": "Unitaid",
-		"subtitle": "Dashboard de exemplo construído no sandbox. Substitua este conteúdo pelo módulo real.",
+		"description": "Painel de exemplo construído no sandbox. Substitua este texto por uma breve descrição do que o módulo mostra e para quem.",
+		"knowMore": "Saiba mais",
+		"modal": {
+			"intro": "Modal de exemplo aberto a partir do título da página. Use-o para explicar o que o painel mostra, como ler os gráficos e de onde vêm os dados.",
+			"body": "Esta janela é o componente Modal compartilhado do host. Substitua este texto nos arquivos i18n; o componente em si é protegido e não pode ser alterado pelo módulo."
+		},
 		"chart": {
 			"title": "Indicador de exemplo por país",
 			"yAxis": "Valor"

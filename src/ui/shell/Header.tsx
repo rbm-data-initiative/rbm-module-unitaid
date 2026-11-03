@@ -1,40 +1,37 @@
 "use client";
 
+import { CircleChevronLeft, CircleChevronRight } from "lucide-react";
 import Image from "next/image";
-import { Menu } from "lucide-react";
-import { useTranslations } from "next-intl";
 import LocaleSwitcher from "./LocaleSwitcher";
+import unops from "../../../public/hosted_unops.webp";
 
 interface HeaderProps {
 	expanded: boolean;
 	onToggle: () => void;
 }
 
-export default function Header({ onToggle }: HeaderProps) {
-	const t = useTranslations("header");
-
+/**
+ * Simplified version of the host's header (src/ui/dashboard/Header.tsx):
+ * transparent, white text, absolutely positioned over the top of the page.
+ * Pages therefore start with a hero block that uses `pt-16` and a dark or
+ * image background, as the module starter page does.
+ */
+export default function Header({ expanded, onToggle }: HeaderProps) {
 	return (
-		<header className="sticky top-0 z-20 flex h-14 w-full items-center justify-between border-b border-slate-200 bg-white px-4 shadow-sm">
-			<button
-				type="button"
-				onClick={onToggle}
-				aria-label="Toggle menu"
-				className="rounded p-1 text-slate-600 hover:bg-slate-100"
-			>
-				<Menu size={20} />
-			</button>
-			<div className="flex items-center gap-4">
+		<header className="absolute left-0 right-0 top-0 z-30 flex h-14 w-full items-center justify-between border-b border-blue-600 text-white">
+			<div className="flex flex-row items-center justify-start">
+				<button
+					type="button"
+					onClick={onToggle}
+					aria-label={expanded ? "Collapse menu" : "Expand menu"}
+					className="p-1.5"
+				>
+					{expanded ? <CircleChevronLeft /> : <CircleChevronRight />}
+				</button>
+			</div>
+			<div className="flex flex-row items-center">
 				<LocaleSwitcher />
-				{/* The host logo is white: it sits on the brand blue, as in the host's logo bar. */}
-				<span className="flex h-10 items-center rounded-md bg-blue-600 px-2">
-					<Image
-						src="/hosted_unops.webp"
-						alt={t("hostedBy")}
-						width={89}
-						height={34}
-						className="h-[34px] w-auto"
-					/>
-				</span>
+				<Image src={unops} className="mr-4" alt="UNOPS" width={89} height={40} />
 			</div>
 		</header>
 	);

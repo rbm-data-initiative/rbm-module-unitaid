@@ -6,7 +6,12 @@
 			"keywords": "Global Malaria Dashboard, RBM Partnership to End Malaria, Paludisme, Tableau de bord, Unitaid, UNOPS"
 		},
 		"title": "Unitaid",
-		"subtitle": "Tableau de bord d'exemple construit dans le bac à sable. Remplacez ce contenu par le module réel.",
+		"description": "Tableau de bord exemple construit dans le bac à sable. Remplacez ce texte par une courte description de ce que le module présente et pour qui.",
+		"knowMore": "En savoir plus",
+		"modal": {
+			"intro": "Fenêtre d'exemple ouverte depuis le titre de la page. Utilisez-la pour expliquer ce que montre le tableau de bord, comment lire les graphiques et d'où viennent les données.",
+			"body": "Cette fenêtre est le composant Modal partagé de l'hôte. Remplacez ce texte dans les fichiers i18n ; le composant lui-même est protégé et ne peut pas être modifié par le module."
+		},
 		"chart": {
 			"title": "Indicateur d'exemple par pays",
 			"yAxis": "Valeur"

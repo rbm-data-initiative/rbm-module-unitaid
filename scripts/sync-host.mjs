@@ -8,7 +8,11 @@
  * opens a pull request with the result.
  *
  * Usage:
- *   node scripts/sync-host.mjs --from ../rbm-sandbox [--dry-run]
+ *   node scripts/sync-host.mjs --from ../rbm-sandbox [--dry-run] [--include-module]
+ *
+ * --include-module also overwrites the three module folders with the template's
+ * starter module, renamed to this team's identity. Use it ONLY while the
+ * external team has not started working on the module: it discards their code.
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -35,6 +39,7 @@ const ROOT = process.cwd();
 
 const argv = process.argv.slice(2);
 const dryRun = argv.includes("--dry-run");
+const includeModule = argv.includes("--include-module");
 const fromIndex = argv.indexOf("--from");
 const fromArg = fromIndex >= 0 ? argv[fromIndex + 1] : undefined;
 if (!fromArg) {
@@ -54,9 +59,15 @@ const rename = makeRenamer(template, local);
 // Files the team repository keeps as its own.
 const KEEP_LOCAL = new Set([PROTECTED_MANIFEST, CONFIG_FILE, CODEOWNERS_FILE]);
 
+const templateModule = modulePaths(template.slug).all;
 const hostFiles = walk(TEMPLATE).filter(
-	(file) => !startsWithAny(file, modulePaths(template.slug).all) && !KEEP_LOCAL.has(file),
+	(file) => (includeModule || !startsWithAny(file, templateModule)) && !KEEP_LOCAL.has(file),
 );
+if (includeModule) {
+	console.log(
+		`Including the starter module (template "${template.slug}" -> "${local.slug}"); local module files are overwritten.`,
+	);
+}
 
 let added = 0;
 let updated = 0;

@@ -42,6 +42,43 @@ Pull requests that touch protected files require approval from the internal team
 
 The external team cannot add, remove or change the version of any package by itself. `package.json` is protected and `scripts/approved-dependencies.json` is the allow list. Need a library (UI kit, parser, chart type)? Record name, version and justification in section 4 of `src/app/[locale]/unitaid/INTEGRATION.md` and agree with the internal team, who adds it, re-snapshots and opens the pull request. The same package also has to enter the main project, which is why approval happens first.
 
+### Fonts
+
+The host ships Roboto, Inter and Poppins; import them with `import { roboto, inter, poppins } from "@/fonts"`. These files are protected and cannot be changed or removed.
+
+The module **can add its own typefaces**, self-hosted inside the module folder:
+
+```
+src/app/[locale]/unitaid/fonts/
+├── files/            # one .woff2 per weight/style, max 1 MB each
+│   ├── brand-400.woff2
+│   └── brand-700.woff2
+└── index.ts          # the only file that calls next/font/local
+```
+
+```ts
+// src/app/[locale]/unitaid/fonts/index.ts
+import localFont from "next/font/local";
+
+export const brand = localFont({
+	src: [
+		{ path: "./files/brand-400.woff2", weight: "400", style: "normal" },
+		{ path: "./files/brand-700.woff2", weight: "700", style: "normal" },
+	],
+	variable: "--font-brand",
+	display: "swap",
+});
+```
+
+```tsx
+// src/app/[locale]/unitaid/page-content.tsx
+import { brand } from "./fonts";
+
+<h1 className={`${brand.className} text-5xl font-bold text-white`}>{t("title")}</h1>
+```
+
+Rules enforced by `npm run check:contract` (`[fonts]` group): font files only in `fonts/files/`, `.woff2` only, `next/font/local` only in `fonts/index.ts`, and never `next/font/google` (the build runs without network access). List every added family, its weights and licence in section 10 of the module's `INTEGRATION.md`. Details and conversion tips: `src/app/[locale]/unitaid/fonts/README.md`.
+
 ## Validation (local and CI)
 
 ```bash
@@ -51,7 +88,7 @@ npm run check:contract   # integration rules (folders, i18n, imports, env, depen
 npm run build            # production build, no network
 ```
 
-The `.github/workflows/ci.yml` workflow runs the four commands on every push and pull request. A contract failure prints the group (`[paths]`, `[protected]`, `[i18n]`, `[imports]`, `[env]`, `[deps]`) and the file involved.
+The `.github/workflows/ci.yml` workflow runs the four commands on every push and pull request. A contract failure prints the group (`[paths]`, `[protected]`, `[i18n]`, `[imports]`, `[env]`, `[deps]`, `[fonts]`) and the file involved.
 
 ## Delivery
 

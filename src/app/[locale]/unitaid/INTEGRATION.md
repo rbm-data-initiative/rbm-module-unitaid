@@ -64,7 +64,15 @@ None. (If any, list name, version, justification and approval.)
 
 - _to fill in_
 
-## 10. Delivery checklist
+## 10. Fonts added by the module
+
+Files under `fonts/files/` (woff2, max 1 MB each), declared in `fonts/index.ts`. They migrate with the module; list them so the licence can be checked.
+
+| Family | Weights / styles | Licence | Source |
+| --- | --- | --- | --- |
+| _none_ | | | |
+
+## 11. Delivery checklist
 
 - [ ] `npm run lint` green
 - [ ] `npm run check:contract` green

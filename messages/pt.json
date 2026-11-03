@@ -7,7 +7,17 @@
 	"header": {
 		"en": "Inglês",
 		"fr": "Francês",
-		"pt": "Português",
-		"hostedBy": "Hospedado pela UNOPS"
+		"pt": "Português"
+	},
+	"components": {
+		"taRequestBanner": {
+			"makeYour": "Faça a sua",
+			"technicalAssistance": "Assistência Técnica",
+			"request": "Requisição"
+		},
+		"bottlenecksBanner": {
+			"bottlenecks": "NMPs Gargalos",
+			"text": "Pesquisa de identificação precoce e resposta"
+		}
 	}
 }

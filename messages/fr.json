@@ -7,7 +7,17 @@
 	"header": {
 		"en": "Anglais",
 		"fr": "Français",
-		"pt": "Portugais",
-		"hostedBy": "Hébergé par l'UNOPS"
+		"pt": "Portugais"
+	},
+	"components": {
+		"taRequestBanner": {
+			"makeYour": "Faites votre",
+			"technicalAssistance": "d'Assistance Technique",
+			"request": "Demande"
+		},
+		"bottlenecksBanner": {
+			"bottlenecks": "NMPs Goulots d'étranglement",
+			"text": "Enquête d'identification et de réponse précoces"
+		}
 	}
 }

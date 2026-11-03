@@ -56,9 +56,18 @@ const ALLOWED_HOST_IMPORTS = [
 	"@/fonts",
 	"@/utils/server/crypto",
 	"@/utils/common-functions",
+	"@/ui/dashboard/TARequestBanner",
+	"@/ui/dashboard/BottlenecksBanner",
+	"@/ui/dashboard/Modal",
 ];
 const ALLOWED_MODULE_IMPORT_PREFIXES = [`@/app/[locale]/${SLUG}/`, `@/app/api/${SLUG}/`];
 const FORBIDDEN_IMPORT_PATTERNS = [/^next\/font\/google/];
+// Module fonts: self-hosted woff2 files declared once with next/font/local.
+const MODULE_FONTS_DIR = `${MODULE_PAGE}fonts/`;
+const MODULE_FONTS_FILES = `${MODULE_FONTS_DIR}files/`;
+const MODULE_FONTS_INDEX = `${MODULE_FONTS_DIR}index.ts`;
+const FONT_EXT = new Set([".woff2", ".woff", ".ttf", ".otf", ".eot"]);
+const MAX_FONT_BYTES = 1024 * 1024;
 const ENV_ALLOWED_FILES = new Set([`${MODULE_PAGE}lib/env.ts`]);
 const ENV_ALLOWED_NAMES = new Set(["NODE_ENV"]);
 
@@ -307,6 +316,43 @@ function checkDependencies() {
 	}
 }
 
+function checkFonts(allFiles, moduleSources) {
+	// 1) font files only under <module>/fonts/files/, woff2 only, size-limited
+	for (const file of allFiles) {
+		if (!startsWithAny(file, ALLOWED_PREFIXES)) continue;
+		const ext = path.extname(file).toLowerCase();
+		if (!FONT_EXT.has(ext)) continue;
+		if (!file.startsWith(MODULE_FONTS_FILES)) {
+			fail(
+				"fonts",
+				`${file}: font files belong in ${MODULE_FONTS_FILES} (loaded with next/font/local)`,
+			);
+			continue;
+		}
+		if (ext !== ".woff2")
+			fail("fonts", `${file}: only .woff2 is accepted (convert ${ext} to woff2)`);
+		const size = fileSize(abs(file));
+		if (size > MAX_FONT_BYTES) {
+			fail("fonts", `${file}: ${(size / 1024).toFixed(0)} KB exceeds the 1 MB limit per font file`);
+		}
+	}
+	// 2) next/font/local only in <module>/fonts/index.ts, pointing at ./files/*.woff2
+	for (const file of moduleSources) {
+		const source = readFileSync(abs(file), "utf8");
+		const usesLocalFont = listImports(source).some((spec) => spec === "next/font/local");
+		if (!usesLocalFont) continue;
+		if (file !== MODULE_FONTS_INDEX) {
+			fail("fonts", `${file}: next/font/local may only be used in ${MODULE_FONTS_INDEX}`);
+			continue;
+		}
+		for (const match of source.matchAll(/["'`]([^"'`]+\.(?:woff2|woff|ttf|otf|eot))["'`]/gi)) {
+			if (!/^\.\/files\/[^/]+\.woff2$/.test(match[1])) {
+				fail("fonts", `${file}: font source "${match[1]}" must be "./files/<name>.woff2"`);
+			}
+		}
+	}
+}
+
 function checkPublicAssets(allFiles) {
 	for (const file of allFiles) {
 		if (!file.startsWith(MODULE_PUBLIC)) continue;
@@ -357,6 +403,7 @@ checkI18n();
 checkImports(moduleSources);
 checkEnv(moduleSources);
 checkDependencies();
+checkFonts(allFiles, moduleSources);
 checkPublicAssets(allFiles);
 
 const groups = Object.keys(issues);
@@ -373,7 +420,7 @@ if (groups.length === 0) {
 }
 
 let count = 0;
-for (const group of ["paths", "protected", "i18n", "imports", "env", "deps"]) {
+for (const group of ["paths", "protected", "i18n", "imports", "env", "deps", "fonts"]) {
 	for (const message of issues[group] ?? []) {
 		count += 1;
 		console.error(`[${group}] ${message}`);

@@ -64,4 +64,13 @@ Never store a token with access to the Global Malaria Dashboard repository in a 
 
 After changing host files in the template, run the **Sync host from template** workflow in each team repository (Actions → Sync host from template → Run workflow). It pulls the host files, re-applies the team's identity, re-snapshots and opens a pull request that the internal team reviews. After merging, update `PROTECTED_MANIFEST_SHA256` with the hash in the pull request body.
 
+Locally, prefer running the **template's** copy of the script against the team checkout, so that a sync that changes the sync script itself (new options, fixes) applies in one go:
+
+```bash
+cd rbm-module-<slug>
+node ../rbm-dashboard-sandbox/scripts/sync-host.mjs --from ../rbm-dashboard-sandbox
+```
+
 If the template repository is private, add a repository secret `HOST_SYNC_TOKEN` with read access to it (fine-grained PAT or GitHub App installation token).
+
+The sync never touches the three module folders: they belong to the external team. While a team has **not started** yet, the starter module can be refreshed too, locally: `npm run host:sync -- --from <template checkout> --include-module`. It overwrites the module folders with the template's starter renamed to the team's slug, so never run it once the team has code there.
