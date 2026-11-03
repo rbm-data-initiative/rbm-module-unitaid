@@ -39,5 +39,8 @@ jobs:
         env:
           PROTECTED_MANIFEST_SHA256: ${{ vars.PROTECTED_MANIFEST_SHA256 }}
 
+      - name: Tests (Vitest)
+        run: npm run test
+
       - name: Build (offline, bundled sample data)
         run: npm run build
