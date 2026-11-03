@@ -7,7 +7,17 @@
 	"header": {
 		"en": "English",
 		"fr": "French",
-		"pt": "Portuguese",
-		"hostedBy": "Hosted by UNOPS"
+		"pt": "Portuguese"
+	},
+	"components": {
+		"taRequestBanner": {
+			"makeYour": "Make your",
+			"technicalAssistance": "Technical Assistance",
+			"request": "Request"
+		},
+		"bottlenecksBanner": {
+			"bottlenecks": "NMPs Bottlenecks",
+			"text": "Early identification and Response Survey"
+		}
 	}
 }

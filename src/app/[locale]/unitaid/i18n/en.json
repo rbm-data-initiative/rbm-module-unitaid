@@ -6,7 +6,12 @@
 			"keywords": "Global Malaria Dashboard, RBM Partnership to End Malaria, Malaria, Dashboard, Unitaid, UNOPS"
 		},
 		"title": "Unitaid",
-		"subtitle": "Sample dashboard built in the sandbox. Replace this content with the real module.",
+		"description": "Sample dashboard built in the sandbox. Replace this text with a short description of what the module shows and for whom.",
+		"knowMore": "Know more",
+		"modal": {
+			"intro": "Example modal opened from the page title. Use it to explain what the dashboard shows, how to read the charts and where the data comes from.",
+			"body": "This dialog is the host's shared Modal component. Replace this text in the i18n files; the component itself is protected and cannot be changed by the module."
+		},
 		"chart": {
 			"title": "Sample indicator by country",
 			"yAxis": "Value"

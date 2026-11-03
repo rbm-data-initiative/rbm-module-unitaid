@@ -20,3 +20,13 @@ body {
 		--background-end-rgb: 0, 0, 0;
 	}
 }
+
+/* Header locale select, same rules as the host project */
+.custom-select {
+	color: white;
+}
+.custom-select option {
+	color: black;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}

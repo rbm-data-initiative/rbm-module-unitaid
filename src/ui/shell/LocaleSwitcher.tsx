@@ -5,6 +5,7 @@ import { useTransition } from "react";
 import { locales, type AppLocale } from "@/config";
 import { usePathname, useRouter } from "@/navigation";
 
+/** Same select as the host header: transparent, white border, white text. */
 export default function LocaleSwitcher() {
 	const t = useTranslations("header");
 	const locale = useLocale();
@@ -25,7 +26,7 @@ export default function LocaleSwitcher() {
 			value={locale}
 			onChange={onChange}
 			disabled={isPending}
-			className="rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-700"
+			className="custom-select mr-6 rounded-lg border border-white bg-transparent py-1 text-[11px]"
 		>
 			{locales.map((code) => (
 				<option key={code} value={code}>
