@@ -30,7 +30,7 @@ src/app/api/unitaid/        # API routes: data (GET proxy) and notifications (PO
 public/unitaid/             # static assets of the module
 ```
 
-Read `src/app/[locale]/unitaid/README.md` for the responsibility of each subfolder.
+Read `src/app/[locale]/unitaid/README.md` for the responsibility of each subfolder. Tests (`*.test.ts`) live next to the code they cover, inside the first two folders; see [Tests](#tests).
 
 ## What not to touch
 
@@ -79,20 +79,41 @@ import { brand } from "./fonts";
 
 Rules enforced by `npm run check:contract` (`[fonts]` group): font files only in `fonts/files/`, `.woff2` only, `next/font/local` only in `fonts/index.ts`, and never `next/font/google` (the build runs without network access). List every added family, its weights and licence in section 10 of the module's `INTEGRATION.md`. Details and conversion tips: `src/app/[locale]/unitaid/fonts/README.md`.
 
+## Tests
+
+The sandbox ships [Vitest](https://vitest.dev) so the module can carry its own test suite. Tests are optional: a repository with no test files passes `npm run test`.
+
+```bash
+npm run test         # run once (what CI does)
+npm run test:watch   # watch mode while developing
+```
+
+Conventions, all enforced or assumed by `vitest.config.mts` and `npm run check:contract`:
+
+- Test files are `*.test.ts` / `*.test.tsx` (or `*.spec.*`) placed next to the code they cover, or helpers and fixtures under a `__tests__/` folder, always inside `src/app/[locale]/unitaid/` or `src/app/api/unitaid/`. Files elsewhere fail the `[paths]` rule.
+- Import `describe`, `it`, `expect` and `vi` from `vitest` explicitly; globals are off.
+- Tests run in Node without a DOM, so they target `lib/`, `utils/`, `types/`, `services/` and the API routes. Component tests with `jsdom` and Testing Library need those packages approved first (see [New dependencies](#new-dependencies)).
+- `@/...` resolves as in `tsconfig.json`, and `server-only` is mapped to an empty module, so code under `lib/` can be imported from a test.
+- A test file is exempt from the `import "server-only"` rule under `lib/` and may touch `process.env` anywhere, but the `UNITAID_` prefix still applies. Prefer `vi.stubEnv` / `vi.unstubAllEnvs` over writing to `process.env`.
+- Test files never reach the Global Malaria Dashboard: the import script leaves them out. Only the sandbox CI runs them.
+
+The starter module contains three small examples: `lib/transform.test.ts`, `lib/env.test.ts` and `src/app/api/unitaid/_lib/store.test.ts`.
+
 ## Validation (local and CI)
 
 ```bash
 npm run lint             # ESLint (next/core-web-vitals)
 npm run format:check     # Biome (tabs, double quotes); `npm run format` fixes
 npm run check:contract   # integration rules (folders, i18n, imports, env, dependencies)
+npm run test             # Vitest (passes when the module has no tests)
 npm run build            # production build, no network
 ```
 
-The `.github/workflows/ci.yml` workflow runs the four commands on every push and pull request. A contract failure prints the group (`[paths]`, `[protected]`, `[i18n]`, `[imports]`, `[env]`, `[deps]`, `[fonts]`) and the file involved.
+The `.github/workflows/ci.yml` workflow runs the five commands on every push and pull request. A contract failure prints the group (`[paths]`, `[protected]`, `[i18n]`, `[imports]`, `[env]`, `[deps]`, `[fonts]`) and the file involved.
 
 ## Delivery
 
-1. The four commands above are green.
+1. The five commands above are green.
 2. The module's `INTEGRATION.md`, `README.md` and `.env.example` are filled in.
 3. A release tag (`v1.0.0`, `v1.1.0`, ...) is created and recorded in the "Delivered version" row of `INTEGRATION.md`. The internal team imports that tag into the main project with the workflow described in [docs/main-repo/](docs/main-repo/README.md).
 

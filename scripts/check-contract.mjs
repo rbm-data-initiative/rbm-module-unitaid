@@ -6,7 +6,9 @@
  * Malaria Dashboard: files only inside the allowed folders, protected starter
  * files untouched, i18n parity, allowed imports, env-var discipline and an
  * approved dependency list. The module identity (slug, namespace, env prefix)
- * comes from module.config.json.
+ * comes from module.config.json. Vitest files (*.test.*, *.spec.*, __tests__/)
+ * are module files like any other, with two relaxations: no server-only marker
+ * under lib/ and process.env allowed anywhere (still prefixed).
  *
  * Usage:
  *   node scripts/check-contract.mjs             # validate (exit 1 on failure)
@@ -93,6 +95,11 @@ const SIDEBAR_KEY_PATTERN = new RegExp(
 );
 const MAX_PUBLIC_ASSET_BYTES = 5 * 1024 * 1024;
 const SOURCE_EXT = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs"]);
+// Vitest files: *.test.* / *.spec.* or anything under a __tests__/ folder. They
+// never reach the build (the main repository drops them on import), so they are
+// exempt from the server-only marker and from the process.env location rule.
+const isTestFile = (file) =>
+	/\.(?:test|spec)\.[cm]?[jt]sx?$/.test(file) || /(?:^|\/)__tests__\//.test(file);
 
 // ---------------------------------------------------------------- helpers
 const abs = (relPath) => path.join(ROOT, relPath);
@@ -249,7 +256,11 @@ function checkImports(moduleSources) {
 				}
 			}
 		}
-		if (file.startsWith(`${MODULE_PAGE}lib/`) && !/import\s+["']server-only["']/.test(source)) {
+		if (
+			file.startsWith(`${MODULE_PAGE}lib/`) &&
+			!isTestFile(file) &&
+			!/import\s+["']server-only["']/.test(source)
+		) {
 			fail("imports", `${file}: files under lib/ must start with import "server-only"`);
 		}
 	}
@@ -261,7 +272,8 @@ function checkEnv(moduleSources) {
 		const source = readFileSync(abs(file), "utf8");
 		const matches = [...source.matchAll(envRe)];
 		if (matches.length === 0) continue;
-		const allowedHere = ENV_ALLOWED_FILES.has(file) || file.startsWith(MODULE_API);
+		const allowedHere =
+			ENV_ALLOWED_FILES.has(file) || file.startsWith(MODULE_API) || isTestFile(file);
 		if (!allowedHere) {
 			fail(
 				"env",
@@ -311,7 +323,7 @@ function checkDependencies() {
 			if (!(name in current)) fail("deps", `${section}: approved dependency "${name}" was removed`);
 		}
 	}
-	for (const script of ["lint", "build", "check:contract"]) {
+	for (const script of ["lint", "build", "check:contract", "test"]) {
 		if (!pkg.scripts?.[script]) fail("deps", `package.json: script "${script}" is required`);
 	}
 }

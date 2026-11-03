@@ -6,7 +6,9 @@
  * evolve together.
  *
  * What it does, from a checkout of the team repository at the delivered tag:
- *   1. replaces src/app/[locale]/<slug>/, src/app/api/<slug>/ and public/<slug>/
+ *   1. replaces src/app/[locale]/<slug>/, src/app/api/<slug>/ and public/<slug>/,
+ *      leaving the module's Vitest files out (*.test.*, *.spec.*, __tests__/):
+ *      the sandbox CI runs them, the main repository does not
  *   2. merges the module i18n files into messages/<locale>.json, refusing any
  *      key that already exists with a different value
  *   3. adds "/<slug>" to `pathnames` in src/config.ts when missing
@@ -19,7 +21,15 @@
  *
  * Node 20, no dependencies.
  */
-import { cpSync, existsSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+	cpSync,
+	existsSync,
+	readdirSync,
+	readFileSync,
+	rmSync,
+	statSync,
+	writeFileSync,
+} from "node:fs";
 import path from "node:path";
 
 const ROOT = process.cwd();
@@ -46,6 +56,9 @@ if (!/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(slug ?? "")) {
 }
 
 const FOLDERS = [`src/app/[locale]/${slug}`, `src/app/api/${slug}`, `public/${slug}`];
+// Test files stay in the sandbox: the main repository has no test runner.
+const isTestPath = (rel) =>
+	/(?:^|[\\/])__tests__(?:[\\/]|$)/.test(rel) || /\.(?:test|spec)\.[cm]?[jt]sx?$/.test(rel);
 const LOCALES = ["en", "fr", "pt"];
 const checklist = [];
 const errors = [];
@@ -62,11 +75,28 @@ for (const folder of FOLDERS) {
 		continue;
 	}
 	const action = existsSync(dst) ? "replaced" : "added";
-	if (!dryRun) {
+	let skippedTests = 0;
+	const filter = (source) => {
+		if (!isTestPath(path.relative(src, source))) return true;
+		if (statSync(source).isFile()) skippedTests += 1;
+		return false;
+	};
+	if (dryRun) {
+		// Walk only to count what would be left out.
+		const walk = (dir) => {
+			for (const entry of readdirSync(dir, { withFileTypes: true })) {
+				const abs = path.join(dir, entry.name);
+				if (!filter(abs)) continue;
+				if (entry.isDirectory()) walk(abs);
+			}
+		};
+		walk(src);
+	} else {
 		rmSync(dst, { recursive: true, force: true });
-		cpSync(src, dst, { recursive: true });
+		cpSync(src, dst, { recursive: true, filter });
 	}
-	console.log(`- ${folder}: ${action}`);
+	const note = skippedTests > 0 ? ` (${skippedTests} test file(s) left out)` : "";
+	console.log(`- ${folder}: ${action}${note}`);
 }
 
 // 2) i18n merge ----------------------------------------------------------

@@ -11,7 +11,7 @@ Reference files for the **main repository**. Nothing here runs in the sandbox.
 
 1. The external team tags a release (`v1.2.0`) in its repository and fills in the "Delivered version" row of `INTEGRATION.md`.
 2. Someone from the internal team runs **Import external module** in the main repository with the team repository and the tag.
-3. The workflow checks the delivery against its own contract, copies the three module folders, merges the module i18n into `messages/*.json` (failing on any key that already exists with a different value), adds the route to `pathnames`, builds, and opens a pull request `module/<slug>/<tag>`.
+3. The workflow checks the delivery against its own contract, copies the three module folders (leaving the Vitest files out: `*.test.*`, `*.spec.*`, `__tests__/`; only the sandbox runs them), merges the module i18n into `messages/*.json` (failing on any key that already exists with a different value), adds the route to `pathnames`, builds, and opens a pull request `module/<slug>/<tag>`.
 4. The pull request body carries the import report (what was copied, what is left for a human) followed by the team's `INTEGRATION.md`. The reviewer does the remaining host changes in the same branch: sidebar entry, environment variables, durable notification store, dependencies.
 
 ## Why the workflow lives here and not in the team repositories
