@@ -12,7 +12,7 @@ The module is the LAUNCH Malaria Product Launch Dashboard: four antimalarial med
 | i18n namespace | `Unitaid` |
 | Final URL | `/{locale}/unitaid`, plus `/{locale}/unitaid/unsubscribe` (the page the subscriber emails link to) |
 | API routes | `GET /api/unitaid/data?dataset=en\|fr\|pt`, `POST /api/unitaid/notifications`, `POST /api/unitaid/subscribe`, `POST /api/unitaid/feedback`, `POST /api/unitaid/unsubscribe` |
-| Delivered version | `v1.0.0` |
+| Delivered version | `v1.1.0` |
 
 `GET /api/unitaid/data` is a public contract (the internal team's planned AI agent may read it): one language of the dataset as JSON, cached on the server for 5 minutes, the same data the page shows. It answers 400 for a missing or unknown `dataset` and 502 when the source cannot be read. The page does not call it; it reads the data on the server itself.
 
@@ -69,7 +69,7 @@ Total 2.5 MB.
 
 | File | Usage | Size |
 | --- | --- | --- |
-| `data/dashboard.en.json`, `.fr.json`, `.pt.json` | Bundled copy of the dataset (published 3 Nov 2026), used only when the source cannot be read and nothing is cached (section 9) | 149 KB, 163 KB, 158 KB |
+| `data/dashboard.en.json`, `.fr.json`, `.pt.json` | Bundled copy of the dataset (published 4 Nov 2026), used only when the source cannot be read and nothing is cached (section 9) | 149 KB, 163 KB, 158 KB |
 | `world-shapes.json` | Country shapes for the map | 1,542 KB |
 | `maplibre-gl-worker.mjs` | MapLibre's worker, version 6.14.0; must match `maplibre-gl` | 496 KB |
 | `unitaid-logo.svg` | "Powered by" logo, Unitaid's official artwork | 10 KB |
