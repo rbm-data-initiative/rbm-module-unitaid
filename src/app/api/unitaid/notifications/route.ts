@@ -1,64 +1,76 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { revalidateTag } from "next/cache";
-import { extractToken } from "@/utils/common-functions";
-import { timingSafeEqual } from "@/utils/server/crypto";
-import { CACHE_TAGS } from "@/app/[locale]/unitaid/lib/cache";
-import { getUnitaidEnv } from "@/app/[locale]/unitaid/lib/env";
-import { isNotificationPayload } from "@/app/[locale]/unitaid/types";
+// POST /api/unitaid/notifications: the notifications route of RBM's module
+// spec (section 2b). The LAUNCH pipeline calls it after publishing a dataset,
+// so the dashboard shows the new data on the next request instead of within
+// 5 minutes.
+//
+// The checks run cheapest first, so a stranger costs nothing:
+//   503  UNITAID_NOTIFICATIONS_TOKEN is not set: every notification is refused
+//   401  no "Authorization: Bearer <token>", or the wrong token
+//   413  a body over 1 MB (declared, or counted while reading)
+//   400  not JSON, or eventId, type, occurredAt or data.dataset missing or wrong
+//   200  { duplicate: true }: this eventId was already received; nothing done
+//   502  the new file cannot be read or used: the cache is left as it was
+//   202  accepted: the file was read and the cached copy expired
+//
+// Parts in lib/notifications.ts; the refresh is lib/data.ts refreshDashboard().
+// The eventIds received are kept by RBM's notification store (_lib/store.ts),
+// which the host replaces with a durable one; an event is recorded only once
+// its refresh succeeded, so a sender may repeat one that got 502.
+import { refreshDashboard } from "@/app/[locale]/unitaid/lib/data";
+import { DatasetError } from "@/app/[locale]/unitaid/lib/dataset";
+import { notificationsToken } from "@/app/[locale]/unitaid/lib/env";
+import {
+	parseNotification,
+	readBody,
+	tokenMatches,
+} from "@/app/[locale]/unitaid/lib/notifications";
 import { getNotificationStore } from "../_lib/store";
 
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
-
-const MAX_BODY_BYTES = 1_000_000;
-
-/**
- * POST /api/unitaid/notifications
- * Receives notifications from an external system. Same model as the host's
- * src/app/api/news/cron/route.ts: constant-time token check, fast response.
- */
-export async function POST(req: NextRequest) {
-	// 1) Authorization
-	const expected = getUnitaidEnv().notificationsToken;
-	if (!expected) {
-		return NextResponse.json(
-			{ ok: false, message: "Notifications endpoint not configured" },
-			{ status: 503 },
+export async function POST(request: Request): Promise<Response> {
+	// read on each request, so a token set or changed needs no new build
+	const token = notificationsToken();
+	if (!token) {
+		console.error("[LAUNCH] notifications: UNITAID_NOTIFICATIONS_TOKEN is not set; refused");
+		return Response.json({ error: "notifications are not configured" }, { status: 503 });
+	}
+	if (!tokenMatches(request.headers.get("authorization"), token)) {
+		return Response.json(
+			{ error: "invalid token" },
+			{ status: 401, headers: { "www-authenticate": 'Bearer realm="unitaid"' } },
 		);
 	}
-	const provided = extractToken(req);
-	if (!timingSafeEqual(provided, expected)) {
-		return NextResponse.json({ ok: false, message: "Unauthorized" }, { status: 401 });
-	}
 
-	// 2) Body: size-limited JSON with a validated shape
-	const length = Number(req.headers.get("content-length") ?? 0);
-	if (length > MAX_BODY_BYTES) {
-		return NextResponse.json({ ok: false, message: "Payload too large" }, { status: 413 });
+	const body = await readBody(request);
+	if (!body.ok) {
+		return body.reason === "too large"
+			? Response.json({ error: "body larger than 1 MB" }, { status: 413 })
+			: Response.json(
+					{ error: "invalid body", problems: ["the body is not UTF-8 text"] },
+					{ status: 400 },
+				);
 	}
-	let body: unknown;
-	try {
-		body = await req.json();
-	} catch {
-		return NextResponse.json({ ok: false, message: "Invalid JSON" }, { status: 400 });
-	}
-	if (!isNotificationPayload(body)) {
-		return NextResponse.json({ ok: false, message: "Invalid payload" }, { status: 400 });
-	}
+	const parsed = parseNotification(body.text);
+	if (!parsed.ok)
+		return Response.json({ error: "invalid body", problems: parsed.problems }, { status: 400 });
 
-	// 3) Idempotency
+	const { eventId, data } = parsed.event;
 	const store = getNotificationStore();
-	if (await store.has(body.eventId)) {
-		return NextResponse.json({ ok: true, duplicate: true, eventId: body.eventId }, { status: 200 });
+	if (await store.has(eventId)) return Response.json({ accepted: true, duplicate: true, eventId });
+
+	try {
+		await refreshDashboard(data.dataset);
+	} catch (e) {
+		if (e instanceof DatasetError) {
+			// not recorded as seen: the sender may send the same event again
+			console.error(`[LAUNCH] notifications: ${eventId}: not refreshed, ${e.kind}: ${e.message}`);
+			return Response.json({ error: "source unavailable", kind: e.kind }, { status: 502 });
+		}
+		throw e;
 	}
-	const stored = await store.save(body);
-	console.info("[unitaid/notifications] received", {
-		eventId: stored.eventId,
-		type: stored.type,
-	});
-
-	// 4) Side effects: refresh the cached dataset
-	revalidateTag(CACHE_TAGS.sample);
-
-	return NextResponse.json({ ok: true, id: stored.id, eventId: stored.eventId }, { status: 202 });
+	await store.save(parsed.event);
+	console.log(`[LAUNCH] notifications: ${eventId}: ${data.dataset} refreshed`);
+	return Response.json(
+		{ accepted: true, duplicate: false, eventId, dataset: data.dataset },
+		{ status: 202 },
+	);
 }
