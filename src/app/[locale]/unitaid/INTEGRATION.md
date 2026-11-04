@@ -12,7 +12,7 @@ The module is the LAUNCH Malaria Product Launch Dashboard: four antimalarial med
 | i18n namespace | `Unitaid` |
 | Final URL | `/{locale}/unitaid`, plus `/{locale}/unitaid/unsubscribe` (the page the subscriber emails link to) |
 | API routes | `GET /api/unitaid/data?dataset=en\|fr\|pt`, `POST /api/unitaid/notifications`, `POST /api/unitaid/subscribe`, `POST /api/unitaid/feedback`, `POST /api/unitaid/unsubscribe` |
-| Delivered version | _to fill in at release (tag `v1.0.0`)_ |
+| Delivered version | `v1.0.0` |
 
 `GET /api/unitaid/data` is a public contract (the internal team's planned AI agent may read it): one language of the dataset as JSON, cached on the server for 5 minutes, the same data the page shows. It answers 400 for a missing or unknown `dataset` and 502 when the source cannot be read. The page does not call it; it reads the data on the server itself.
 
