@@ -188,6 +188,11 @@
 	--warn: #b87500;
 	--warn-text: #8c5a00;
 	--warn-soft: #fbf0da;
+	/* the disclaimer yellow (Unitaid, 5 Nov 2026): pale fill, strong edge, dark icon */
+	--notice: #e9b800;
+	--notice-soft: #fff7d1;
+	--notice-line: #f1de93;
+	--notice-ink: #7a5c00;
 	--crit: #c0392b;
 	--crit-soft: #fae7e4;
 	--idle: #7a8a94;
@@ -2696,6 +2701,66 @@
 	color: var(--ink-2);
 	line-height: 1.45;
 }
+/* Procurement without figures (Unitaid, 5 Nov 2026): a notice that the figures
+     are under review, then the presentations bought as tiles, medicine on top
+     and pack below. The tiles fill the row on a wide card and stack on a phone. */
+.launch-dashboard .card .proc-review {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	margin: 2px 0 0;
+	padding: 8px 12px;
+	background: var(--surface-2);
+	border-radius: 8px;
+	font-size: 14px;
+	color: var(--ink-2);
+	line-height: 1.45;
+}
+.launch-dashboard .card .proc-review svg {
+	flex: none;
+	width: 16px;
+	height: 16px;
+	margin-top: 2px;
+	color: var(--ink-3);
+}
+.launch-dashboard .card .proc-lh {
+	margin: 14px 0 8px;
+	font-size: 14px;
+	font-weight: 650;
+	color: var(--ink);
+}
+.launch-dashboard .card ul.proc-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 8px;
+	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+.launch-dashboard .card ul.proc-list li {
+	margin: 0;
+	padding: 9px 12px;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+}
+.launch-dashboard .proc-list .pl-f {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--ink);
+	line-height: 1.35;
+}
+.launch-dashboard .proc-list .pl-p {
+	font-size: 13px;
+	color: var(--ink-2);
+	line-height: 1.35;
+}
+.launch-dashboard .proc-card .proc-scope {
+	margin-top: 12px;
+}
 .launch-dashboard .proc-table {
 	margin-top: 10px;
 	font-size: 13px;
@@ -2890,9 +2955,9 @@
 	margin-top: 8px;
 }
 .launch-dashboard .disclaimer {
-	background: var(--accent-soft);
-	border: 1px solid var(--line);
-	border-left: 5px solid var(--accent);
+	background: var(--notice-soft);
+	border: 1px solid var(--notice-line);
+	border-left: 5px solid var(--notice);
 	border-radius: 10px;
 	padding: 14px 18px;
 	color: var(--ink);
@@ -2911,7 +2976,7 @@
 }
 .launch-dashboard .disclaimer h3 svg {
 	flex: none;
-	color: var(--accent);
+	color: var(--notice-ink);
 }
 .launch-dashboard .disclaimer p {
 	margin: 0 0 8px;

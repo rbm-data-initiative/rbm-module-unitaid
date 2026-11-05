@@ -125,6 +125,9 @@ export interface BoardText {
 	packs: string;
 	courses: string;
 	notEstimated: string;
+	/** the list of presentations bought, while the figures are parked */
+	boughtHeading: string;
+	boughtScope: string;
 	/** when there are no figures and no volumeNote */
 	dataNotYetAvailable: string;
 	acknowledgement: string;
@@ -219,6 +222,8 @@ export function boardText(locale: Locale): BoardText {
 		packs: proc.packs,
 		courses: proc.courses,
 		notEstimated: proc.notEstimated,
+		boughtHeading: proc.boughtHeading,
+		boughtScope: proc.boughtScope,
 		dataNotYetAvailable: proc.notAvailable,
 		acknowledgement: cards.acknowledgement,
 		source: m.common.sourceLabel,

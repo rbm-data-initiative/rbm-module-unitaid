@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T16:41:40.025Z",
-  "approved_at": "2026-11-04T16:41:40.025Z",
-  "approved_by": "codebyjackson",
+  "generated_at": "2026-11-05T11:27:24.982Z",
+  "approved_at": "2026-11-05T11:27:24.983Z",
+  "approved_by": "KylerXiv",
   "approval": {
     "trigger": "manual",
     "issue": null,
     "pr": null,
-    "reason": "French and Brazilian Portuguese from the professional translators"
+    "reason": "Unitaid feedback 5 Nov 2026: procurement figures parked (presentations only), class label removed, translators' wording (PRs #148, #149)"
   },
-  "pipeline_commit": "4ad780e08c0eb8232a7b5470a0d256a7ad18f437",
-  "content_hash": "9f9ac9c488e91b50a3cc36e458e9fd50a5bf2bec9126db63d171428525eb99f3",
+  "pipeline_commit": "6054af6ed76f4ef050b68f7340ee92bbe954ca0b",
+  "content_hash": "4d09eabb64c9c420a5e572a20a8cd4830e1e2a6565c953420fd01d48de724a9f",
   "locale": "en",
   "data_status": "draft",
-  "last_updated": "2026-11-03",
+  "last_updated": "2026-11-05",
   "source_coverage": [
     {
       "id": "bmjgh-rwanda-mft",
@@ -542,6 +542,11 @@
     },
     "changelog": [
       {
+        "date": "2026-11-05",
+        "product": "ASPY, DHA–PPQ",
+        "plain": "Procurement figures are withdrawn while they are reviewed. Each medicine's procurement section lists the presentations bought through Global Fund-financed orders, and the figures will be added again once they are confirmed."
+      },
+      {
         "date": "2026-11-03",
         "product": "ASPY, DHA–PPQ",
         "plain": "We checked the official medicine registers of 14 more countries. DHA–PPQ is now confirmed as registered in 20 countries and ASPY in 14. The map also shows Uganda and DR Congo, where the STOP-AMDR project plans to use these medicines."
@@ -604,7 +609,7 @@
       {
         "date": "2026-10-15",
         "product": "All",
-        "plain": "We updated the name of WHO's malaria department to the Department of Malaria and Neglected Tropical Diseases (MNT). The country counts for ASPY and DHA–PPQ now match the country access map, and we show how many countries a national medicines register confirms. We removed the years-late figures until the way they are worked out is agreed; the expected time for each stage stays. ALAQ's description now says it is still in clinical development and that its future role depends on trial results, regulators, WHO and countries. ASPY's description now says that registration and adoption vary by country and that LAUNCH is checking them country by country. For DHA–PPQ we explain what the 0.9–4.5% is a share of, describe its uses more carefully, and corrected Nigeria's count of active registrations from 26 to 25. No dates or statuses changed."
+        "plain": "We updated the name of WHO's malaria department to the Department of Malaria and Neglected Tropical Diseases (MNT). The country counts for ASPY and DHA–PPQ now match the country access map, and we show how many countries a national medicines register confirms. We removed the years-late figures until the way they are worked out is agreed; the expected time for each stage stays. ALAQ's description now says it is still in clinical development and that its future role depends on trial results, regulators, WHO and countries. ASPY's description now says that registration and adoption vary by country and that LAUNCH is checking them country by country. For DHA–PPQ we explain what its share of Global Fund orders is measured against, describe its uses more carefully, and corrected Nigeria's count of active registrations from 26 to 25. No dates or statuses changed."
       },
       {
         "date": "2026-10-15",
@@ -639,7 +644,7 @@
       {
         "date": "2026-09-08",
         "product": "ASPY",
-        "plain": "We found a real example of a country acting on the World Health Organization's advice: Ghana added this medicine as a backup first-choice treatment in 2022. It's still the only country confirmed to have done so. We also recorded the years Global Fund purchasing began for both underused medicines (2018 and 2008)."
+        "plain": "We found a real example of a country acting on the World Health Organization's advice: Ghana added this medicine as a backup first-choice treatment in 2022. It's still the only country confirmed to have done so. We also recorded the years Global Fund purchasing began for both recommended medicines (2018 and 2008)."
       },
       {
         "date": "2026-09-05",
@@ -684,12 +689,12 @@
       {
         "date": "2026-08-23",
         "product": "DHA–PPQ",
-        "plain": "Purchasing figures added: the Global Fund has bought 11.5 million packs (US$41.5m) since 2008, with a sharp rise in 2025. Nine versions of the medicine have passed World Health Organization quality checks."
+        "plain": "Global Fund purchasing figures were added (orders since 2008). Nine versions of the medicine have passed World Health Organization quality checks."
       },
       {
         "date": "2026-08-23",
         "product": "ASPY",
-        "plain": "Purchasing figures added: the Global Fund has bought 940,000 packs (US$14.5m) since 2018, most of it in 2025 for Uganda and Burkina Faso. The European medicines decision date is now recorded."
+        "plain": "Global Fund purchasing figures were added (orders since 2018). The European medicines decision date is now recorded."
       },
       {
         "date": "2026-08-23",
@@ -1088,7 +1093,7 @@
         "inn": "Artesunate–pyronaridine (Pyramax)",
         "manufacturer": "Shin Poong Pharmaceutical · MMV",
         "class": "market",
-        "classLabel": "Recommended · underutilized",
+        "classLabel": "WHO-recommended",
         "phase": "access",
         "currentStage": 5,
         "flag": "Adoption is the current access barrier — strongly recommended by WHO since 2022 and on the country access map in 19 countries with a reliable source, but national guideline inclusion remains limited",
@@ -1192,10 +1197,10 @@
           },
           {
             "status": "prog",
-            "note": "Global Fund procurement 2018–2025: 68 transactions, US$14.5m — modest overall, but US$11.6m of it landed in 2025 (led by Uganda and Burkina Faso), a sharp uptick consistent with early MFT rollouts",
+            "note": "Bought through Global Fund-financed procurement since 2018. The procurement figures are being reviewed and will be added later.",
             "date": "Since 2018",
-            "next": "Verify 2025 surge holds in next quarterly PQR extract",
-            "nextDate": "Q4 2026",
+            "next": "Procurement figures to be added after review",
+            "nextDate": "TBC",
             "source": "Global Fund PQR Transaction Summary (extract 23 Aug 2026)",
             "asOf": "2026-08-23",
             "sources": [
@@ -1451,31 +1456,14 @@
               "year": "TBC"
             }
           ],
-          "volume": {
-            "total": "68 transactions · US$14.5m (2018–2025)",
-            "period": "Global Fund PQR, 2018–2025 · US$11.6m in 2025 · top buyers Uganda, Burkina Faso, Ghana",
-            "split": [
-              {
-                "channel": "Global Fund (PQR-recorded)",
-                "pct": 100
-              }
+          "volume": null,
+          "volumeNote": "Procurement figures are being reviewed and will be added later.",
+          "procurement": {
+            "presentations": [
+              "20/60 mg granules · 90 sachets",
+              "60/180 mg tablets · pack of 90"
             ],
-            "source": "Global Fund PQR Transaction Summary, extract 23 Aug 2026 — sourcing/staging/procurement_transactions.csv. Covers Global Fund-financed procurement only; US PMI data unavailable post-2025 (GHSC-PSM dataset offline). Recent quarters incomplete due to PQR reporting lag.",
-            "byPresentation": [
-              {
-                "label": "60/180 mg tablets · pack of 90",
-                "transactions": 43,
-                "packs": 542233,
-                "courses": null
-              },
-              {
-                "label": "20/60 mg granules · 90 sachets",
-                "transactions": 25,
-                "packs": 397878,
-                "courses": null
-              }
-            ],
-            "coursesRule": "Treatment courses are not estimated: the Global Fund's product names for ASPY do not state how many tablets or sachets make one course, and the number depends on body weight.",
+            "source": "Global Fund PQR Transaction Summary, extract 23 Aug 2026",
             "sources": [
               "global-fund-pqr"
             ]
@@ -1592,10 +1580,10 @@
             {
               "milestone": "Procurement scale-up",
               "status": "prog",
-              "label": "US$14.5m, 68 transactions (GF, to 2025)",
-              "date": "US$11.6m in 2025",
-              "next": "Verify surge in next PQR extract",
-              "anticipated": "Q4 2026",
+              "label": "Figures under review",
+              "date": "Since 2018",
+              "next": "Figures to be added after review",
+              "anticipated": "TBC",
               "source": "Global Fund PQR (extract 23 Aug 2026)",
               "sources": [
                 "global-fund-pqr"
@@ -1610,11 +1598,11 @@
         "inn": "Dihydroartemisinin–piperaquine",
         "manufacturer": "Alfasigma (Eurartesim) · Guilin · Beijing Holley (PQ'd suppliers)",
         "class": "market",
-        "classLabel": "Recommended · underutilized",
+        "classLabel": "WHO-recommended",
         "phase": "access",
         "currentStage": 6,
-        "flag": "Procurement is the current access barrier — 0.9–4.5% of the value of all antimalarial medicines the Global Fund ordered each year in 2022–24, despite a WHO recommendation dating to 2010, though 2025 orders surged (PQR, reporting still incomplete)",
-        "barrier": "Only 0.9–4.5% of Global Fund antimalarial orders by value, 2022–24",
+        "flag": "Procurement is the current access barrier, despite a WHO recommendation dating to 2010. The procurement figures behind this are being reviewed.",
+        "barrier": "Procurement; figures under review",
         "stages": [
           {
             "status": "done",
@@ -1718,10 +1706,10 @@
           },
           {
             "status": "late",
-            "note": "Global Fund orders go back to 2008 (US$41.5m over 234 transactions, 2008–2026), but have stayed small: 0.9–4.5% of the value of all antimalarial medicines the Global Fund ordered each year in 2022–24 (4.4% in 2022, 0.9% in 2023, 4.5% in 2024, by order date). The timeline counts from WHO prequalification in 2015. 2025 shows a sharp uptick (US$15.3m, led by Uganda, Madagascar, Mozambique) that needs confirming as reporting completes",
+            "note": "Bought through Global Fund-financed procurement since 2008; the timeline counts from WHO prequalification in 2015. The procurement figures are being reviewed and will be added later.",
             "date": "Since 2008",
-            "next": "Verify 2025 surge holds in next quarterly PQR extract",
-            "nextDate": "Q4 2026",
+            "next": "Procurement figures to be added after review",
+            "nextDate": "TBC",
             "source": "Global Fund PQR Transaction Summary (extract 23 Aug 2026)",
             "asOf": "2026-08-23",
             "sources": [
@@ -1745,7 +1733,7 @@
         "detail": {
           "price": {
             "value": "TBC",
-            "note": "Pooled procurement reference pricing to be displayed once confirmed for release; PQR median pack price ≈ US$1.70 across presentations (indicative only — pack sizes vary)",
+            "note": "Pooled procurement reference pricing to be displayed once confirmed for release",
             "source": "",
             "confirmedInWriting": false,
             "asOf": "2026-08-23"
@@ -2024,91 +2012,24 @@
               "year": "TBC"
             }
           ],
-          "volume": {
-            "total": "234 transactions · US$41.5m (2008–2026)",
-            "period": "Global Fund PQR, 2008–2026 · US$15.3m in 2025 · top buyers Uganda, Madagascar, Mozambique",
-            "split": [
-              {
-                "channel": "Global Fund (PQR-recorded)",
-                "pct": 100
-              }
+          "volume": null,
+          "volumeNote": "Procurement figures are being reviewed and will be added later.",
+          "procurement": {
+            "presentations": [
+              "20/160 mg dispersible tablets · blister of 3",
+              "20/160 mg dispersible tablets · box of 2 blisters of 3",
+              "20/160 mg dispersible tablets · box of 25 blisters of 3",
+              "20/160 mg tablets · blister of 3",
+              "40/320 mg dispersible tablets · blister of 3",
+              "40/320 mg dispersible tablets · box of 2 blisters of 3",
+              "40/320 mg dispersible tablets · box of 25 blisters of 3",
+              "40/320 mg tablets · blister of 3",
+              "40/320 mg tablets · blister of 6",
+              "40/320 mg tablets · blister of 9",
+              "40/320 mg tablets · box of 25 blisters of 9",
+              "40/320 mg tablets · recorded as 3 per course, in a blister of 8"
             ],
-            "source": "Global Fund PQR Transaction Summary, extract 23 Aug 2026 — sourcing/staging/procurement_transactions.csv. Covers Global Fund-financed procurement only; US PMI data unavailable post-2025 (GHSC-PSM dataset offline). Recent quarters incomplete due to PQR reporting lag.",
-            "byPresentation": [
-              {
-                "label": "40/320 mg tablets · blister of 9",
-                "transactions": 69,
-                "packs": 6400111,
-                "courses": 6400111
-              },
-              {
-                "label": "40/320 mg dispersible tablets · blister of 3",
-                "transactions": 15,
-                "packs": 2711497,
-                "courses": null
-              },
-              {
-                "label": "40/320 mg dispersible tablets · box of 2 blisters of 3",
-                "transactions": 11,
-                "packs": 427750,
-                "courses": null
-              },
-              {
-                "label": "20/160 mg dispersible tablets · box of 25 blisters of 3",
-                "transactions": 25,
-                "packs": 334390,
-                "courses": 8359750
-              },
-              {
-                "label": "40/320 mg tablets · box of 25 blisters of 9",
-                "transactions": 19,
-                "packs": 323694,
-                "courses": 8092350
-              },
-              {
-                "label": "20/160 mg dispersible tablets · box of 2 blisters of 3",
-                "transactions": 25,
-                "packs": 315009,
-                "courses": 630018
-              },
-              {
-                "label": "40/320 mg tablets · blister of 3",
-                "transactions": 21,
-                "packs": 305842,
-                "courses": 305842
-              },
-              {
-                "label": "40/320 mg tablets · blister of 6",
-                "transactions": 27,
-                "packs": 205708,
-                "courses": 205708
-              },
-              {
-                "label": "40/320 mg tablets · recorded as 3 per course, in a blister of 8",
-                "transactions": 7,
-                "packs": 166193,
-                "courses": null
-              },
-              {
-                "label": "20/160 mg dispersible tablets · blister of 3",
-                "transactions": 3,
-                "packs": 134728,
-                "courses": 134728
-              },
-              {
-                "label": "20/160 mg tablets · blister of 3",
-                "transactions": 9,
-                "packs": 95290,
-                "courses": 95290
-              },
-              {
-                "label": "40/320 mg dispersible tablets · box of 25 blisters of 3",
-                "transactions": 3,
-                "packs": 72827,
-                "courses": null
-              }
-            ],
-            "coursesRule": "Treatment courses are estimated only where the Global Fund's product name states the tablets in one course (\"40mg+320mg - 9\" is 9 tablets): courses = tablets in the pack ÷ tablets per course. Packs whose name does not state it, or does not divide evenly, are not estimated.",
+            "source": "Global Fund PQR Transaction Summary, extract 23 Aug 2026",
             "sources": [
               "global-fund-pqr"
             ]
@@ -2256,10 +2177,10 @@
             {
               "milestone": "Procurement scale-up",
               "status": "late",
-              "label": "US$41.5m since 2008",
-              "date": "US$15.3m in 2025",
-              "next": "Verify surge in next PQR extract",
-              "anticipated": "Q4 2026",
+              "label": "Figures under review",
+              "date": "Since 2008",
+              "next": "Figures to be added after review",
+              "anticipated": "TBC",
               "source": "Global Fund PQR (extract 23 Aug 2026)",
               "sources": [
                 "global-fund-pqr"
