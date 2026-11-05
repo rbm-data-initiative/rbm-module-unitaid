@@ -142,6 +142,17 @@ export interface Procurement {
 	coursesRule?: string;
 }
 
+/**
+ * detail.procurement: the presentations bought, with no figures (Unitaid,
+ * 5 Nov 2026). Shown only while detail.volume is null; sorted by strength and
+ * pack size, so the order says nothing about quantities.
+ */
+export interface ProcurementList {
+	presentations: string[];
+	source?: string;
+	sources?: string[];
+}
+
 export interface Research {
 	lead: string;
 	geographies: string;
@@ -172,6 +183,7 @@ export interface ProductDetail {
 	volume?: Procurement | null;
 	/** shown in place of procurement figures when there are none */
 	volumeNote?: string;
+	procurement?: ProcurementList;
 	[key: string]: unknown;
 }
 

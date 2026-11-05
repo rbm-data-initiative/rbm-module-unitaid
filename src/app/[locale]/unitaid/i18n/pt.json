@@ -156,7 +156,9 @@
 				"transactions": "Transações",
 				"packs": "Pacotes",
 				"courses": "Tratamentos completos (est.)",
-				"notEstimated": "não estimado"
+				"notEstimated": "não estimado",
+				"boughtHeading": "Apresentações adquiridas por meio de encomendas financiadas pelo Fundo Global",
+				"boughtScope": "Encomendas pagas por outros doadores, governos nacionais ou compradores privados não estão incluídas."
 			},
 			"milestones": {
 				"milestone": "Marco",
@@ -375,7 +377,7 @@
 		"about": {
 			"launchTitle": "Sobre o LAUNCH",
 			"launchPurpose": "Financiado pela Unitaid, o LAUNCH é uma prova de conceito destinada a tornar transparente o processo de acesso a novos medicamentos antimaláricos. Ele reúne em um só lugar informações públicas sobre cada medicamento, desde o desenvolvimento e a aprovação regulatória, passando pela recomendação e pré-qualificação da OMS, até o registro, as políticas, aquisições e a distribuição nos países, para que os parceiros possam identificar onde o acesso está sendo dificultado e tomar medidas para solucionar esses obstáculos.",
-			"launchScope": "O projeto começa com quatro medicamentos relevantes para as estratégias de terapia múltipla de primeira linha (MFT), que utilizam mais de um tratamento de primeira linha em uma população para reduzir o risco de resistência aos medicamentos. Dois já são recomendados pela OMS, mas são subutilizados: artesunato–pironaridina (ASPY) e di-hidroartemisinina–piperaquina (DHA–PPQ). Dois estão em estágio avançado de desenvolvimento: ganaplacida–lumefantrina (GanLum) e arteméter–lumefantrina–amodiaquina (ALAQ). Juntos, eles abrangem as duas partes do processo: a aprovação dos medicamentos em desenvolvimento e adoção e aquisição daqueles já recomendados.",
+			"launchScope": "O projeto começa com quatro medicamentos relevantes para as estratégias de terapia múltipla de primeira linha (MFT), que utilizam mais de um tratamento de primeira linha em uma população para reduzir o risco de resistência aos medicamentos. Dois já são recomendados pela OMS: artesunato–pironaridina (ASPY) e di-hidroartemisinina–piperaquina (DHA–PPQ). Dois estão em estágio avançado de desenvolvimento: ganaplacida–lumefantrina (GanLum) e arteméter–lumefantrina–amodiaquina (ALAQ). Juntos, eles abrangem as duas partes do processo: a aprovação dos medicamentos em desenvolvimento e adoção e aquisição daqueles já recomendados.",
 			"launchNoEndorsement": "O acompanhamento de um medicamento não significa que o LAUNCH ou a Unitaid o endosse ou recomende para qualquer uso. O painel informa em que etapa do processo de acesso se encontra cada medicamento, e não se ele deve ser utilizado. Para esta prova de conceito, o escopo são esses quatro medicamentos; futuramente, poderá ser ampliado para incluir outros medicamentos e ferramentas de combate à malária.",
 			"dataTitle": "Sobre os dados",
 			"dataBody": "O painel LAUNCH apresenta apenas informações disponíveis publicamente. Detalhes específicos de produtos são apresentados somente quando o fabricante confirma por escrito que podem ser compartilhados. As análises pelas autoridades sanitárias podem ocorrer em qualquer etapa do desenvolvimento, e seu status geralmente não é público. Portanto, as etapas regulatórias só são modificadas quando uma autoridade reguladora ou o fabricante anuncia um resultado. Os dados de aquisições abrangem apenas os canais públicos. Passe o cursor sobre qualquer etapa para visualizar detalhes de status; selecione um medicamento para abrir seu perfil completo.",

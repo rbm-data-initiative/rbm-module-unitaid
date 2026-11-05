@@ -9,8 +9,55 @@ import type { ReactElement } from "react";
 import { ICON, PROCUREMENT_SHADES, procurementGfOnly } from "@/app/[locale]/unitaid/utils/board";
 import type { Product, ProductDetail } from "@/app/[locale]/unitaid/lib/dataset";
 import { DATE_LOCALE, citeLinks, citeOrText, fmtFig } from "@/app/[locale]/unitaid/utils/format";
+import { InfoIcon } from "@/app/[locale]/unitaid/components/frame/icons";
 import { sourceLine } from "./cite";
 import type { Scope } from "./types";
+
+/**
+ * A presentation's name, split into the medicine and its pack at its first
+ * " · ", or at " - " or a run of spaces, which is where the Portuguese
+ * translations put that break.
+ */
+const PACK_BREAK = /^(.*?)(?:\s+·\s+|\s+-\s+|\s{2,})(.*)$/;
+
+/**
+ * Procurement with its figures parked (Unitaid, 5 Nov 2026: "remove all the
+ * numbers so that people cannot argue about it"): the presentations bought,
+ * and nothing that counts them. Null when there is nothing to list.
+ */
+function procurementList(d: ProductDetail, s: Scope): ReactElement | null {
+	const { text } = s;
+	const pr = d.procurement;
+	const list = pr && Array.isArray(pr.presentations) ? pr.presentations : [];
+	if (!pr || !list.length) return null;
+	return (
+		<div className={`card proc-card${list.length > 3 ? " card-wide" : ""}`}>
+			<h3>{text.procurement}</h3>
+			{d.volumeNote ? (
+				<p className="proc-review">
+					<InfoIcon />
+					<span>{d.volumeNote}</span>
+				</p>
+			) : null}
+			<h4 className="proc-lh">{text.boughtHeading}</h4>
+			<ul className="proc-list">
+				{list.map((name) => {
+					const m = PACK_BREAK.exec(name);
+					return (
+						<li key={name}>
+							<span className="pl-f">{m ? m[1] : name}</span>
+							{m ? <span className="pl-p">{m[2]}</span> : null}
+						</li>
+					);
+				})}
+			</ul>
+			<p className="proc-scope">{text.boughtScope}</p>
+			{pr.source || (pr.sources || []).length ? (
+				<div className="prov">{sourceLine(s, citeOrText(pr.sources, pr.source, s.sources))}</div>
+			) : null}
+		</div>
+	);
+}
 
 /**
  * Procurement through public channels (partner feedback, 15 Oct 2026). The
@@ -21,6 +68,8 @@ function volumeCard(d: ProductDetail, s: Scope): ReactElement {
 	const { text } = s;
 	const v = d.volume;
 	if (!v) {
+		const listed = procurementList(d, s);
+		if (listed) return listed;
 		return (
 			<div className="card">
 				<h3>{text.procurement}</h3>

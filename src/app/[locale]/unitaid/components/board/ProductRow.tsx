@@ -169,9 +169,12 @@ export function ProductRow({
 					<div className="l1h">
 						<div className="l1id">
 							<span>{p.manufacturer}</span>
-							<span className={`chip ${p.class === "pipeline" ? "pipeline" : ""}`}>
-								{p.classLabel}
-							</span>
+							{/* no label on the two recommended medicines (Unitaid, 5 Nov 2026) */}
+							{p.class === "market" ? null : (
+								<span className={`chip ${p.class === "pipeline" ? "pipeline" : ""}`}>
+									{p.classLabel}
+								</span>
+							)}
 						</div>
 						<div className="l1ctl">
 							<span className="l1t">
