@@ -2707,8 +2707,11 @@
 	line-height: 1.45;
 }
 /* Procurement without figures (Unitaid, 5 Nov 2026): a notice that the figures
-     are under review, then the presentations bought as tiles, medicine on top
-     and pack below. The tiles fill the row on a wide card and stack on a phone. */
+     are under review, then the presentations bought as a two-column table, the
+     medicine and its pack, in the old table's look. Full width: in a normal
+     card French "CONDITIONNEMENT" ran past the edge. Pack text wraps rather
+     than scrolls; a heading breaks only if nothing else fits (a 320 px phone).
+     On a phone the Pack column stays: .ystable hides columns 2 and 3. */
 .launch-dashboard .card .proc-review {
 	display: flex;
 	align-items: flex-start;
@@ -2734,34 +2737,28 @@
 	font-weight: 650;
 	color: var(--ink);
 }
-.launch-dashboard .card ul.proc-list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: grid;
-	gap: 8px;
-	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+.launch-dashboard .proc-names tbody th {
+	width: 50%;
 }
-.launch-dashboard .card ul.proc-list li {
-	margin: 0;
-	padding: 9px 12px;
-	border: 1px solid var(--line);
-	border-radius: 8px;
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
-	min-width: 0;
+.launch-dashboard .proc-names td {
+	white-space: normal;
 }
-.launch-dashboard .proc-list .pl-f {
-	font-size: 14px;
-	font-weight: 600;
-	color: var(--ink);
-	line-height: 1.35;
+.launch-dashboard .proc-names thead th {
+	hyphens: auto;
+	overflow-wrap: anywhere;
 }
-.launch-dashboard .proc-list .pl-p {
-	font-size: 13px;
-	color: var(--ink-2);
-	line-height: 1.35;
+@media (max-width: 560px) {
+	.launch-dashboard .ystable.proc-names th:nth-child(2),
+	.launch-dashboard .ystable.proc-names td:nth-child(2) {
+		display: table-cell;
+	}
+	.launch-dashboard .proc-names th,
+	.launch-dashboard .proc-names td {
+		padding-inline: 8px;
+	}
+	.launch-dashboard .proc-names tbody th {
+		width: auto;
+	}
 }
 .launch-dashboard .proc-card .proc-scope {
 	margin-top: 12px;

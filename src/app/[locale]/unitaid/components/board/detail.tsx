@@ -23,7 +23,9 @@ const PACK_BREAK = /^(.*?)(?:\s+·\s+|\s+-\s+|\s{2,})(.*)$/;
 /**
  * Procurement with its figures parked (Unitaid, 5 Nov 2026: "remove all the
  * numbers so that people cannot argue about it"): the presentations bought,
- * and nothing that counts them. Null when there is nothing to list.
+ * and nothing that counts them, as a table of the medicine and its pack (the
+ * old table without its number columns). Full width, as the old table was.
+ * Null when there is nothing to list.
  */
 function procurementList(d: ProductDetail, s: Scope): ReactElement | null {
 	const { text } = s;
@@ -31,7 +33,7 @@ function procurementList(d: ProductDetail, s: Scope): ReactElement | null {
 	const list = pr && Array.isArray(pr.presentations) ? pr.presentations : [];
 	if (!pr || !list.length) return null;
 	return (
-		<div className={`card proc-card${list.length > 3 ? " card-wide" : ""}`}>
+		<div className="card proc-card card-wide">
 			<h3>{text.procurement}</h3>
 			{d.volumeNote ? (
 				<p className="proc-review">
@@ -40,17 +42,25 @@ function procurementList(d: ProductDetail, s: Scope): ReactElement | null {
 				</p>
 			) : null}
 			<h4 className="proc-lh">{text.boughtHeading}</h4>
-			<ul className="proc-list">
-				{list.map((name) => {
-					const m = PACK_BREAK.exec(name);
-					return (
-						<li key={name}>
-							<span className="pl-f">{m ? m[1] : name}</span>
-							{m ? <span className="pl-p">{m[2]}</span> : null}
-						</li>
-					);
-				})}
-			</ul>
+			<table className="ystable proc-names">
+				<thead>
+					<tr>
+						<th scope="col">{text.presentation}</th>
+						<th scope="col">{text.pack}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{list.map((name) => {
+						const m = PACK_BREAK.exec(name);
+						return (
+							<tr key={name}>
+								<th scope="row">{m ? m[1] : name}</th>
+								<td>{m ? m[2] : ""}</td>
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
 			<p className="proc-scope">{text.boughtScope}</p>
 			{pr.source || (pr.sources || []).length ? (
 				<div className="prov">{sourceLine(s, citeOrText(pr.sources, pr.source, s.sources))}</div>

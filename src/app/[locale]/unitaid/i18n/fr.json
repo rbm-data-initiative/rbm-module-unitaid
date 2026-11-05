@@ -152,6 +152,7 @@
 				"globalFundOnly": "Toutes les transactions affichées correspondent à des commandes financées par le Fonds mondial et issues de sa base de données PQR. Les commandes réglées par d’autres donateurs, des gouvernements nationaux ou des acheteurs privés ne sont pas incluses ; ce chiffre ne reflète donc pas la totalité des achats mondiaux de ce produit.",
 				"notAvailable": "Données indisponibles à ce jour",
 				"presentation": "Présentation",
+				"pack": "Conditionnement",
 				"transactions": "Transactions",
 				"packs": "Packs",
 				"courses": "Nombre de traitements (estimé)",
