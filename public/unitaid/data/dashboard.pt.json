@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T16:41:40.025Z",
-  "approved_at": "2026-11-04T16:41:40.025Z",
-  "approved_by": "codebyjackson",
+  "generated_at": "2026-11-05T11:27:24.982Z",
+  "approved_at": "2026-11-05T11:27:24.983Z",
+  "approved_by": "KylerXiv",
   "approval": {
     "trigger": "manual",
     "issue": null,
     "pr": null,
-    "reason": "French and Brazilian Portuguese from the professional translators"
+    "reason": "Unitaid feedback 5 Nov 2026: procurement figures parked (presentations only), class label removed, translators' wording (PRs #148, #149)"
   },
-  "pipeline_commit": "4ad780e08c0eb8232a7b5470a0d256a7ad18f437",
-  "content_hash": "9f9ac9c488e91b50a3cc36e458e9fd50a5bf2bec9126db63d171428525eb99f3",
+  "pipeline_commit": "6054af6ed76f4ef050b68f7340ee92bbe954ca0b",
+  "content_hash": "4d09eabb64c9c420a5e572a20a8cd4830e1e2a6565c953420fd01d48de724a9f",
   "locale": "pt",
   "data_status": "draft",
-  "last_updated": "2026-11-03",
+  "last_updated": "2026-11-05",
   "source_coverage": [
     {
       "id": "bmjgh-rwanda-mft",
@@ -542,6 +542,11 @@
     },
     "changelog": [
       {
+        "date": "2026-11-05",
+        "product": "ASPY, DHA–PPQ",
+        "plain": "Os dados de aquisição são suspensos enquanto estão sendo analisados. A seção de aquisição de cada medicamento lista as apresentações compradas por meio de pedidos financiados pelo Fundo Global, e os dados serão adicionados novamente assim que forem confirmados."
+      },
+      {
         "date": "2026-11-03",
         "product": "ASPY, DHA–PPQ",
         "plain": "Consultamos os registros oficiais de medicamentos de mais 14 países. O DHA-PPQ agora está confirmado como registrado em 20 países e o ASPY em 14. O mapa também mostra Uganda e a República Democrática do Congo, onde o projeto STOP-AMDR planeja utilizar esses medicamentos."
@@ -604,7 +609,7 @@
       {
         "date": "2026-10-15",
         "product": "All",
-        "plain": "Atualizamos o nome do departamento de malária da OMS para Departamento de Malária e Doenças Tropicais Negligenciadas (MNT). As contagens de países para ASPY e DHA–PPQ agora correspondem ao mapa de acesso por país, e mostramos em quantos países são confirmados pelo registro nacional de medicamentos. Removemos os números de anos de atraso até que haja um consenso sobre a metodologia de cálculo dos mesmos; o tempo previsto para cada etapa foi mantido. A descrição da ALAQ agora informa que ela ainda está em desenvolvimento clínico e que seu papel futuro depende dos resultados dos ensaios clínicos, das autoridades reguladoras, da OMS e dos países. A descrição da ASPY agora informa que o registro e a adoção variam entre os países e que o LAUNCH está verificando essas informações em cada país. Para DHA–PPQ, esclarecemos a que se refere a proporção de 0,9% a 4,5%, descrevemos seus usos com mais precisão e corrigimos de 26 para 25 o número de registros ativos na Nigéria. Nenhuma data ou status foram alterados."
+        "plain": "Atualizamos o nome do departamento de malária da OMS para Departamento de Malária e Doenças Tropicais Negligenciadas (MNT). A contagem de países para ASPY e DHA-PPQ agora corresponde ao mapa de acesso por país, e mostramos quantos países um registro nacional de medicamentos confirma. Removemos os dados com anos de atraso até que a forma de cálculo seja definida; o tempo previsto para cada etapa permanece o mesmo. A descrição do ALAQ agora indica que ele ainda está em desenvolvimento clínico e que seu papel futuro depende dos resultados dos ensaios, das agências reguladoras, da OMS e dos países. A descrição do ASPY agora indica que o registro e a adoção variam de acordo com o país e que o LAUNCH está verificando-os país por país. Para o DHA-PPQ, explicamos em relação a qual sua participação nos pedidos do Fundo Global é medida, descrevemos seus usos com mais detalhes e corrigimos a contagem de registros ativos da Nigéria de 26 para 25. Nenhuma data ou status foi alterado."
       },
       {
         "date": "2026-10-15",
@@ -639,7 +644,7 @@
       {
         "date": "2026-09-08",
         "product": "ASPY",
-        "plain": "Encontramos um exemplo concreto de um país que está seguindo as recomendações da Organização Mundial da Saúde: Gana incluiu esse medicamento como tratamento alternativo de primeira linha em 2022. Até o momento, continua sendo o único país com essa medida confirmada. Também registramos os anos em que o Global Fund começou a adquirir os dois medicamentos subutilizados (2018 e 2008)."
+        "plain": "Encontramos um exemplo concreto de um país que está seguindo as recomendações da Organização Mundial da Saúde: Gana incluiu esse medicamento como tratamento alternativo de primeira linha em 2022. Até o momento, continua sendo o único país com essa medida confirmada. Também registramos os anos em que o Global Fund começou a adquirir os dois medicamentos recomendados (2018 e 2008)."
       },
       {
         "date": "2026-09-05",
@@ -684,12 +689,12 @@
       {
         "date": "2026-08-23",
         "product": "DHA–PPQ",
-        "plain": "Dados de aquisições incluídos: o Global Fund adquiriu 11,5 milhões de embalagens (US$ 41,5 milhões) desde 2008, com um aumento acentuado em 2025. Nove versões do medicamento passaram pelas avaliações de qualidade da Organização Mundial da Saúde."
+        "plain": "Foram adicionados os dados de compras do Fundo Global (encomendas desde 2008). Nove versões do medicamento passaram pelos controles de qualidade da Organização Mundial da Saúde."
       },
       {
         "date": "2026-08-23",
         "product": "ASPY",
-        "plain": "Dados de aquisições incluídos: o Global Fund adquiriu 940 mil embalagens (US$ 14,5 milhões) desde 2018, a maior parte em 2025 para Uganda e Burkina Faso. A data da decisão da autoridade europeia de medicamentos agora está registrada."
+        "plain": "Foram adicionados os dados de compras do Fundo Global (encomendas desde 2018). A data da decisão europeia sobre medicamentos foi agora registada."
       },
       {
         "date": "2026-08-23",
@@ -1088,7 +1093,7 @@
         "inn": "Artesunate–pyronaridine (Pyramax)",
         "manufacturer": "Shin Poong Pharmaceutical · MMV",
         "class": "market",
-        "classLabel": "Recomendado - subutilizado",
+        "classLabel": "Recomendado pela OMS",
         "phase": "access",
         "currentStage": 5,
         "flag": "A adoção é a atual barreira de acesso — fortemente recomendada pela OMS desde 2022 e presente no mapa de acesso nacional em 19 países com fonte confiável, mas a inclusão nas diretrizes nacionais permanece limitada.",
@@ -1192,10 +1197,10 @@
           },
           {
             "status": "prog",
-            "note": "Aquisições do Global Fund entre 2018 e 2025: 68 transações, US$ 14,5 milhões — volume total modesto, mas US$ 11,6 milhões destes foram registrados em 2025 (com liderança de Uganda e Burkina Faso), um aumento acentuado compatível com as fases iniciais de implementação de MFT",
+            "note": "Adquirido através de compras financiadas pelo Fundo Global desde 2018. Os valores das compras estão sendo revisados e serão adicionados posteriormente.",
             "date": "Desde 2018",
-            "next": "Verificar se o aumento acentuado de 2025 se mantém no próximo extrato trimestral do PQR",
-            "nextDate": "Q4 2026",
+            "next": "Os valores relativos às aquisições serão adicionados após revisão.",
+            "nextDate": "TBC",
             "source": "Global Fund PQR Transaction Summary (extract 23 Aug 2026)",
             "asOf": "2026-08-23",
             "sources": [
@@ -1451,31 +1456,14 @@
               "year": "TBC"
             }
           ],
-          "volume": {
-            "total": "68 transações · US$ 14,5 milhões (2018–2025)",
-            "period": "PQR do Global Fund, 2018–2025 · US$ 11,6 milhões em 2025 · principais compradores: Uganda, Burkina Faso e Gana",
-            "split": [
-              {
-                "channel": "Global Fund (registrado no PQR)",
-                "pct": 100
-              }
+          "volume": null,
+          "volumeNote": "Os dados sobre as aquisições estão sendo analisados e serão adicionados posteriormente.",
+          "procurement": {
+            "presentations": [
+              "Grânulos de 20/60 mg - 90 sachês",
+              "Comprimidos de 60/180 mg - embalagem com 90 unidades"
             ],
-            "source": "Global Fund PQR Transaction Summary, extract 23 Aug 2026 — sourcing/staging/procurement_transactions.csv. Covers Global Fund-financed procurement only; US PMI data unavailable post-2025 (GHSC-PSM dataset offline). Recent quarters incomplete due to PQR reporting lag.",
-            "byPresentation": [
-              {
-                "label": "Comprimidos de 60/180 mg - embalagem com 90 unidades",
-                "transactions": 43,
-                "packs": 542233,
-                "courses": null
-              },
-              {
-                "label": "Grânulos de 20/60 mg - 90 sachês",
-                "transactions": 25,
-                "packs": 397878,
-                "courses": null
-              }
-            ],
-            "coursesRule": "O número de tratamentos completos não é estimado: os nomes dos produtos ASPY no Global Fund não indicam quantos comprimidos ou sachês são necessários para um tratamento completo, e essa quantidade depende do peso corporal.",
+            "source": "Global Fund PQR Transaction Summary, extract 23 Aug 2026",
             "sources": [
               "global-fund-pqr"
             ]
@@ -1592,10 +1580,10 @@
             {
               "milestone": "Ampliação das aquisições",
               "status": "prog",
-              "label": "US$ 14,5 milhões, 68 transações (GF, até 2025)",
-              "date": "US$ 11,6 milhões em 2025",
-              "next": "Verificar o aumento acentuado no próximo extrato do PQR",
-              "anticipated": "Q4 2026",
+              "label": "Dados em análise",
+              "date": "Desde 2018",
+              "next": "Os números serão adicionados após revisão.",
+              "anticipated": "TBC",
               "source": "Global Fund PQR (extract 23 Aug 2026)",
               "sources": [
                 "global-fund-pqr"
@@ -1610,11 +1598,11 @@
         "inn": "Dihydroartemisinin–piperaquine",
         "manufacturer": "Alfasigma (Eurartesim) · Guilin · Beijing Holley (PQ'd suppliers)",
         "class": "market",
-        "classLabel": "Recomendado - subutilizado",
+        "classLabel": "Recomendado pela OMS",
         "phase": "access",
         "currentStage": 6,
-        "flag": "As aquisições são atualmente a principal barreira ao acesso – representaram de 0,9% a 4,5% do valor total dos medicamentos antimaláricos encomendados pelo Global Fund a cada ano entre 2022 e 2024, apesar de uma recomendação da OMS datada de 2010, embora os pedidos tenham aumentado acentuadamente em 2025 (PQR, dados ainda incompletos)",
-        "barrier": "Apenas 0,9% a 4,5% do valor dos pedidos de medicamentos antimaláricos do Global Fund entre 2022 e 2024",
+        "flag": "O processo de aquisição é a atual barreira de acesso, apesar de uma recomendação da OMS datada de 2010. Os dados relativos às aquisições que comprovam essa situação estão sendo analisados.",
+        "barrier": "Aquisições; números em revisão",
         "stages": [
           {
             "status": "done",
@@ -1718,10 +1706,10 @@
           },
           {
             "status": "late",
-            "note": "Os pedidos do Global Fund remontam a 2008 (US$ 41,5 milhões em 234 transações, entre 2008 e 2026), mas permaneceram modestos: de 0,9% a 4,5% do valor total de medicamentos antimaláricos pedidos pelo Global Fund a cada ano entre 2022 e 2024 (4,4% em 2022, 0,9% em 2023 e 4,5% em 2024, por data de pedido). A linha do tempo começa na pré-qualificação pela OMS em 2015. Em 2025, observa-se um aumento acentuado (US$ 15,3 milhões, liderado por Uganda, Madagascar e Moçambique), que precisa ser confirmado à medida que o relatório é concluído",
+            "note": "Adquiridos por meio de compras financiadas pelo Fundo Global desde 2008; o período começa a contar a partir da pré-qualificação da OMS em 2015. Os valores das compras estão sendo revisados e serão adicionados posteriormente.",
             "date": "Desde 2008",
-            "next": "Verificar se o aumento acentuado de 2025 se mantém no próximo extrato trimestral do PQR",
-            "nextDate": "Q4 2026",
+            "next": "Os valores relativos às aquisições serão adicionados após revisão.",
+            "nextDate": "TBC",
             "source": "Global Fund PQR Transaction Summary (extract 23 Aug 2026)",
             "asOf": "2026-08-23",
             "sources": [
@@ -1745,7 +1733,7 @@
         "detail": {
           "price": {
             "value": "TBC",
-            "note": "Pooled procurement reference pricing to be displayed once confirmed for release; PQR median pack price ≈ US$1.70 across presentations (indicative only — pack sizes vary)",
+            "note": "Pooled procurement reference pricing to be displayed once confirmed for release",
             "source": "",
             "confirmedInWriting": false,
             "asOf": "2026-08-23"
@@ -2024,91 +2012,24 @@
               "year": "TBC"
             }
           ],
-          "volume": {
-            "total": "234 transações · US$ 41,5 milhões (2008–2026)",
-            "period": "PQR do Global Fund, 2008–2026 · US$ 15,3 milhões em 2025 · principais compradores: Uganda, Madagascar e Moçambique",
-            "split": [
-              {
-                "channel": "Global Fund (registrado no PQR)",
-                "pct": 100
-              }
+          "volume": null,
+          "volumeNote": "Os dados sobre as aquisições estão sendo analisados e serão adicionados posteriormente.",
+          "procurement": {
+            "presentations": [
+              "Comprimidos dispersíveis de 20/160 mg   blister com 3 unidades",
+              "Comprimidos dispersíveis de 20/160 mg   caixa com 2 blisters de 3 unidades",
+              "Comprimidos dispersíveis de 20/160 mg   caixa com 25 blisters de 3 unidades",
+              "Comprimidos de 20/160 mg   blister com 3 unidades",
+              "Comprimidos dispersíveis de 40/320 mg   blister com 3 unidades",
+              "Comprimidos dispersíveis de 40/320 mg   caixa com 2 blisters de 3 unidades",
+              "Comprimidos dispersíveis de 40/320 mg   caixa com 25 blisters de 3 unidades",
+              "Comprimidos de 40/320 mg   blister com 3 unidades",
+              "Comprimidos de 40/320 mg   blister com 6 unidades",
+              "Comprimidos de 40/320 mg   blister com 9 unidades",
+              "Comprimidos de 40/320 mg   caixa com 25 blisters de 9 unidades",
+              "Comprimidos de 40/320 mg · registrados como 3 por tratamento completo, em um blister com 8 unidades"
             ],
-            "source": "Global Fund PQR Transaction Summary, extract 23 Aug 2026 — sourcing/staging/procurement_transactions.csv. Covers Global Fund-financed procurement only; US PMI data unavailable post-2025 (GHSC-PSM dataset offline). Recent quarters incomplete due to PQR reporting lag.",
-            "byPresentation": [
-              {
-                "label": "Comprimidos de 40/320 mg   blister com 9 unidades",
-                "transactions": 69,
-                "packs": 6400111,
-                "courses": 6400111
-              },
-              {
-                "label": "Comprimidos dispersíveis de 40/320 mg   blister com 3 unidades",
-                "transactions": 15,
-                "packs": 2711497,
-                "courses": null
-              },
-              {
-                "label": "Comprimidos dispersíveis de 40/320 mg   caixa com 2 blisters de 3 unidades",
-                "transactions": 11,
-                "packs": 427750,
-                "courses": null
-              },
-              {
-                "label": "Comprimidos dispersíveis de 20/160 mg   caixa com 25 blisters de 3 unidades",
-                "transactions": 25,
-                "packs": 334390,
-                "courses": 8359750
-              },
-              {
-                "label": "Comprimidos de 40/320 mg   caixa com 25 blisters de 9 unidades",
-                "transactions": 19,
-                "packs": 323694,
-                "courses": 8092350
-              },
-              {
-                "label": "Comprimidos dispersíveis de 20/160 mg   caixa com 2 blisters de 3 unidades",
-                "transactions": 25,
-                "packs": 315009,
-                "courses": 630018
-              },
-              {
-                "label": "Comprimidos de 40/320 mg   blister com 3 unidades",
-                "transactions": 21,
-                "packs": 305842,
-                "courses": 305842
-              },
-              {
-                "label": "Comprimidos de 40/320 mg   blister com 6 unidades",
-                "transactions": 27,
-                "packs": 205708,
-                "courses": 205708
-              },
-              {
-                "label": "Comprimidos de 40/320 mg · registrados como 3 por tratamento completo, em um blister com 8 unidades",
-                "transactions": 7,
-                "packs": 166193,
-                "courses": null
-              },
-              {
-                "label": "Comprimidos dispersíveis de 20/160 mg   blister com 3 unidades",
-                "transactions": 3,
-                "packs": 134728,
-                "courses": 134728
-              },
-              {
-                "label": "Comprimidos de 20/160 mg   blister com 3 unidades",
-                "transactions": 9,
-                "packs": 95290,
-                "courses": 95290
-              },
-              {
-                "label": "Comprimidos dispersíveis de 40/320 mg   caixa com 25 blisters de 3 unidades",
-                "transactions": 3,
-                "packs": 72827,
-                "courses": null
-              }
-            ],
-            "coursesRule": "O número de tratamentos completos é estimado apenas quando o nome do produto no Global Fund indica a quantidade de comprimidos por tratamento completo (\"40mg+320mg - 9\" corresponde a 9 comprimidos): tratamentos completos = número de comprimidos na embalagem ÷ número de comprimidos por tratamento completo. Não são feitas estimativas para embalagens cujo nome não informa essa quantidade ou quando a divisão não resulta em um número inteiro.",
+            "source": "Global Fund PQR Transaction Summary, extract 23 Aug 2026",
             "sources": [
               "global-fund-pqr"
             ]
@@ -2256,10 +2177,10 @@
             {
               "milestone": "Ampliação das aquisições",
               "status": "late",
-              "label": "US$ 41,5 milhões desde 2008",
-              "date": "US$ 11,6 milhões em 2025",
-              "next": "Verificar o aumento acentuado no próximo extrato do PQR",
-              "anticipated": "Q4 2026",
+              "label": "Dados em análise",
+              "date": "Desde 2008",
+              "next": "Os números serão adicionados após revisão.",
+              "anticipated": "TBC",
               "source": "Global Fund PQR (extract 23 Aug 2026)",
               "sources": [
                 "global-fund-pqr"

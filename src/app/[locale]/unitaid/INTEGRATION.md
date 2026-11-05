@@ -12,9 +12,9 @@ The module is the LAUNCH Malaria Product Launch Dashboard: four antimalarial med
 | i18n namespace | `Unitaid` |
 | Final URL | `/{locale}/unitaid`, plus `/{locale}/unitaid/unsubscribe` (the page the subscriber emails link to) |
 | API routes | `GET /api/unitaid/data?dataset=en\|fr\|pt`, `POST /api/unitaid/notifications`, `POST /api/unitaid/subscribe`, `POST /api/unitaid/feedback`, `POST /api/unitaid/unsubscribe` |
-| Delivered version | `v1.1.1` |
+| Delivered version | `v1.2.0` |
 
-`GET /api/unitaid/data` is a public contract (the internal team's planned AI agent may read it): one language of the dataset as JSON, cached on the server for 5 minutes, the same data the page shows. It answers 400 for a missing or unknown `dataset` and 502 when the source cannot be read. The page does not call it; it reads the data on the server itself.
+`GET /api/unitaid/data` is a public contract (the internal team's planned AI agent may read it): one language of the dataset as JSON, cached on the server for 5 minutes, the same data the page shows. It answers 400 for a missing or unknown `dataset` and 502 when the source cannot be read. The page does not call it; it reads the data on the server itself. Since v1.2.0 (Unitaid, 5 Nov 2026), ASPY's and DHA–PPQ's procurement figures are withheld until they are confirmed: their `detail.volume` is `null`, and a new field, `detail.procurement.presentations`, lists the presentations bought, with no figures.
 
 The three form routes relay to the LAUNCH forms service (section 5); the browser only ever calls this site. A `GET` to any of them answers 405 with `Allow: POST`.
 
@@ -69,7 +69,7 @@ Total 2.5 MB.
 
 | File | Usage | Size |
 | --- | --- | --- |
-| `data/dashboard.en.json`, `.fr.json`, `.pt.json` | Bundled copy of the dataset (published 4 Nov 2026), used only when the source cannot be read and nothing is cached (section 9) | 149 KB, 163 KB, 158 KB |
+| `data/dashboard.en.json`, `.fr.json`, `.pt.json` | Bundled copy of the dataset (published 5 Nov 2026), used only when the source cannot be read and nothing is cached (section 9) | 145 KB, 161 KB, 155 KB |
 | `world-shapes.json` | Country shapes for the map | 1,542 KB |
 | `maplibre-gl-worker.mjs` | MapLibre's worker, version 6.14.0; must match `maplibre-gl` | 496 KB |
 | `unitaid-logo.svg` | "Powered by" logo, Unitaid's official artwork | 10 KB |
@@ -86,6 +86,7 @@ Total 2.5 MB.
 - **Bundled copy.** When the dataset address cannot be read and nothing is cached, the page and the data route use the copy in `public/unitaid/data/`, say so with `console.error`, and the data route adds the header `X-Unitaid-Source: fallback`. A build without network access (as in CI) pre-renders the page from that copy, so after a deploy visitors may see it for up to 5 minutes, until the first refresh. A source in a format this code does not read (another `schema_version`) is never replaced by the copy: the data route answers 502.
 - **Notifications:** the sender is not built yet, and the store is in memory (section 6).
 - **Tests:** the module's test suite is kept by the LAUNCH team and run there against this module's code; none are in this repository yet.
+- **Procurement figures (v1.2.0):** withheld at Unitaid's request until they are confirmed. The procurement card lists the presentations bought and says the figures will be added later; they return in a later release.
 - **Status labels (v1.0):** the pathway shows each step's symbol and colour without the words "Delayed" or "In progress", and no barrier text, until RBM and Unitaid agree a status taxonomy.
 - **Phones.** The dashboard needs about 330 px of width (about 340 px in French). Inside the host frame, the collapsed sidebar keeps a 60 px strip on the left, so on phones narrower than about 400 px the page is wider than the screen and scrolls sideways (in Chrome: English fits at 390 px, French does not; all three languages overflow at 360 px). On a phone the sidebar also opens by default and takes most of the screen. To discuss with the internal team: whether the strip and the open sidebar are kept on phones in production.
 - **Browsers:** checked in Chrome only (desktop at 1440 px, phones at 360 and 390 px); not yet on Safari or an iPhone.
