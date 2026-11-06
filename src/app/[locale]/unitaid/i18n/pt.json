@@ -152,6 +152,7 @@
 				"globalFundOnly": "Todas as transações apresentadas são pedidos financiados pelo Fundo Global, provenientes de seu banco de dados PQR. Pedidos pagos por outros doadores, governos nacionais ou compradores privados não estão incluídos; portanto, este valor não representa o total de aquisições globais do produto.",
 				"notAvailable": "Dados ainda não disponíveis",
 				"presentation": "Apresentação",
+				"pack": "Embalagem",
 				"transactions": "Transações",
 				"packs": "Pacotes",
 				"courses": "Tratamentos completos (est.)",
