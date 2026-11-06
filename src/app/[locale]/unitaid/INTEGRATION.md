@@ -12,9 +12,9 @@ The module is the LAUNCH Malaria Product Launch Dashboard: four antimalarial med
 | i18n namespace | `Unitaid` |
 | Final URL | `/{locale}/unitaid`, plus `/{locale}/unitaid/unsubscribe` (the page the subscriber emails link to) |
 | API routes | `GET /api/unitaid/data?dataset=en\|fr\|pt`, `POST /api/unitaid/notifications`, `POST /api/unitaid/subscribe`, `POST /api/unitaid/feedback`, `POST /api/unitaid/unsubscribe` |
-| Delivered version | `v1.2.0` |
+| Delivered version | `v1.3.0` |
 
-`GET /api/unitaid/data` is a public contract (the internal team's planned AI agent may read it): one language of the dataset as JSON, cached on the server for 5 minutes, the same data the page shows. It answers 400 for a missing or unknown `dataset` and 502 when the source cannot be read. The page does not call it; it reads the data on the server itself. Since v1.2.0 (Unitaid, 5 Nov 2026), ASPY's and DHA–PPQ's procurement figures are withheld until they are confirmed: their `detail.volume` is `null`, and a new field, `detail.procurement.presentations`, lists the presentations bought, with no figures.
+`GET /api/unitaid/data` is a public contract (the internal team's planned AI agent may read it): one language of the dataset as JSON, cached on the server for 5 minutes, the same data the page shows. It answers 400 for a missing or unknown `dataset` and 502 when the source cannot be read. The page does not call it; it reads the data on the server itself. Since v1.2.0 (Unitaid, 5 Nov 2026), ASPY's and DHA–PPQ's procurement figures are withheld until they are confirmed: their `detail.volume` is `null`, and a new field, `detail.procurement.presentations`, lists the presentations bought, with no figures. Since v1.3.0 (6 Nov 2026), `stages[1]` is "Stringent Regulatory Review (SRA)" and a new optional field, `stageInfo[i].doneName`, gives a step's name on a medicine that has completed it: stage 2 then reads "Stringent Regulatory Approval (SRA)".
 
 The three form routes relay to the LAUNCH forms service (section 5); the browser only ever calls this site. A `GET` to any of them answers 405 with `Allow: POST`.
 
@@ -69,7 +69,7 @@ Total 2.5 MB.
 
 | File | Usage | Size |
 | --- | --- | --- |
-| `data/dashboard.en.json`, `.fr.json`, `.pt.json` | Bundled copy of the dataset (published 5 Nov 2026), used only when the source cannot be read and nothing is cached (section 9) | 145 KB, 161 KB, 155 KB |
+| `data/dashboard.en.json`, `.fr.json`, `.pt.json` | Bundled copy of the dataset (published 6 Nov 2026), used only when the source cannot be read and nothing is cached (section 9) | 146 KB, 162 KB, 156 KB |
 | `world-shapes.json` | Country shapes for the map | 1,542 KB |
 | `maplibre-gl-worker.mjs` | MapLibre's worker, version 6.14.0; must match `maplibre-gl` | 496 KB |
 | `unitaid-logo.svg` | "Powered by" logo, Unitaid's official artwork | 10 KB |

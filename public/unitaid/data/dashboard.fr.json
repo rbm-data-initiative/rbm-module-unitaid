@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T11:27:24.982Z",
-  "approved_at": "2026-11-05T11:27:24.983Z",
-  "approved_by": "KylerXiv",
+  "generated_at": "2026-11-06T05:53:35.539Z",
+  "approved_at": "2026-11-06T05:53:35.539Z",
+  "approved_by": "codebyjackson",
   "approval": {
     "trigger": "manual",
     "issue": null,
     "pr": null,
-    "reason": "Unitaid feedback 5 Nov 2026: procurement figures parked (presentations only), class label removed, translators' wording (PRs #148, #149)"
+    "reason": "Stage 2: Stringent Regulatory Review (SRA) until completed (PR #153)"
   },
-  "pipeline_commit": "6054af6ed76f4ef050b68f7340ee92bbe954ca0b",
-  "content_hash": "4d09eabb64c9c420a5e572a20a8cd4830e1e2a6565c953420fd01d48de724a9f",
+  "pipeline_commit": "0b5bfc337fd3780cf063c8c6735f933788deb6d1",
+  "content_hash": "96429fd5f0a423740048be4c8ba4a55a5e850346b94c33bade8041eca8c513ef",
   "locale": "fr",
   "data_status": "draft",
-  "last_updated": "2026-11-05",
+  "last_updated": "2026-11-06",
   "source_coverage": [
     {
       "id": "bmjgh-rwanda-mft",
@@ -398,7 +398,7 @@
     "host": "RBM Partnership to End Malaria",
     "stages": [
       "R&D et essais cliniques",
-      "Approbation d’une autorité de réglementation rigoureuse (SRA)",
+      "Examen réglementaire rigoureux (SRA)",
       "Recommandation de l’OMS",
       "Préqualification de l’OMS",
       "Enregistrement national",
@@ -455,7 +455,8 @@
         "what": "Une autorité de réglementation rigoureuse examine l’ensemble des données probantes sur la qualité du produit, son innocuité et son efficacité. Pour les médicaments antipaludiques, on applique souvent la procédure EU-M4all (ancien article 58) de l’Agence européenne des médicaments (EMA), qui couvre les médicaments destinés à être utilisés en dehors de l’Europe. Toutes les étapes qui interviennent après ce processus s’appuient sur l’avis émis par l’autorité sanitaire. L’avancée de son examen n’est généralement pas communiquée publiquement : on passe à l’étape suivante uniquement après que l’autorité de réglementation ou le fabricant ont annoncé les conclusions de l’étude.",
         "who": "L’EMA, ou une autre autorité de réglementation rigoureuse comme la Food and Drug Administration (FDA) des États-Unis.",
         "stall": "Préparer l’ensemble du dossier, puis attendre la fin de l’examen.",
-        "source": "Les registres de l’EMA."
+        "source": "Les registres de l’EMA.",
+        "doneName": "Approbation d’une autorité de réglementation rigoureuse (SRA)"
       },
       {
         "what": "Le Groupe d'élaboration des lignes directrices (GDG) de l'OMS pour le paludisme examine les preuves graduées (GRADE) sur un médicament antipaludique et d'autres critères, et s'accorde par consensus sur la direction et la force de chaque recommandation dans les lignes directrices de l'OMS pour le paludisme.",
@@ -541,6 +542,11 @@
       "GMP": "Bonnes pratiques de fabrication – une norme de qualité qui est vérifiée lors des inspections sur les sites de production."
     },
     "changelog": [
+      {
+        "date": "2026-11-06",
+        "product": "All",
+        "plain": "La deuxième étape est désormais appelée « Examen réglementaire rigoureux (SRA) » tant qu'un médicament est en attente d'autorisation, et « Autorisation réglementaire rigoureuse (SRA) » une fois qu'il a été autorisé. Aucune date, aucun statut ni aucun chiffre n'ont été modifiés."
+      },
       {
         "date": "2026-11-05",
         "product": "ASPY, DHA–PPQ",

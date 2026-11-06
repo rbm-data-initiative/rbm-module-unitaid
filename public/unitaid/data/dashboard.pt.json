@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T11:27:24.982Z",
-  "approved_at": "2026-11-05T11:27:24.983Z",
-  "approved_by": "KylerXiv",
+  "generated_at": "2026-11-06T05:53:35.539Z",
+  "approved_at": "2026-11-06T05:53:35.539Z",
+  "approved_by": "codebyjackson",
   "approval": {
     "trigger": "manual",
     "issue": null,
     "pr": null,
-    "reason": "Unitaid feedback 5 Nov 2026: procurement figures parked (presentations only), class label removed, translators' wording (PRs #148, #149)"
+    "reason": "Stage 2: Stringent Regulatory Review (SRA) until completed (PR #153)"
   },
-  "pipeline_commit": "6054af6ed76f4ef050b68f7340ee92bbe954ca0b",
-  "content_hash": "4d09eabb64c9c420a5e572a20a8cd4830e1e2a6565c953420fd01d48de724a9f",
+  "pipeline_commit": "0b5bfc337fd3780cf063c8c6735f933788deb6d1",
+  "content_hash": "96429fd5f0a423740048be4c8ba4a55a5e850346b94c33bade8041eca8c513ef",
   "locale": "pt",
   "data_status": "draft",
-  "last_updated": "2026-11-05",
+  "last_updated": "2026-11-06",
   "source_coverage": [
     {
       "id": "bmjgh-rwanda-mft",
@@ -398,7 +398,7 @@
     "host": "RBM Partnership to End Malaria",
     "stages": [
       "P&D e Área Clínica",
-      "Aprovação Regulatória Rigorosa (SRA)",
+      "Análise regulatória rigorosa (SRA)",
       "Recomendação da OMS",
       "Listagem de pré-qualificação da OMS",
       "Registro de país",
@@ -455,7 +455,8 @@
         "what": "Uma autoridade reguladora rigorosa analisa todas as evidências relativas à qualidade, segurança e eficácia. No caso dos medicamentos contra a malária, geralmente é utilizado o procedimento EU-M4all da Agência Europeia de Medicamentos (EMA), anteriormente conhecido como Artigo 58, que abrange medicamentos destinados ao uso fora da Europa. Todas as etapas subsequentes se baseiam nesse parecer. O status da análise pelas autoridades sanitárias geralmente não é público, portanto, essa etapa só muda quando uma autoridade reguladora ou o fabricante anuncia um resultado.",
         "who": "EMA ou outra autoridade reguladora rigorosa, como a FDA dos EUA.",
         "stall": "Preparar o dossiê completo e, em seguida, aguardar a conclusão da análise.",
-        "source": "Registros da EMA"
+        "source": "Registros da EMA",
+        "doneName": "Aprovação Regulatória Rigorosa (SRA)"
       },
       {
         "what": "O Grupo de Desenvolvimento de Diretrizes (GDG) da OMS para malária analisa as evidências classificadas (GRADE) sobre um medicamento antimalárico e outros critérios, e chega a um consenso sobre a direção e a força de cada recomendação nas Diretrizes da OMS para malária.",
@@ -541,6 +542,11 @@
       "GMP": "Boas Práticas de Fabricação – padrão de qualidade verificado por meio de inspeções nas instalações de fabricação."
     },
     "changelog": [
+      {
+        "date": "2026-11-06",
+        "product": "All",
+        "plain": "A segunda etapa agora é chamada de \"Análise Regulatória Rigorosa (SRA)\" enquanto um medicamento ainda aguarda aprovação, e \"Aprovação Regulatória Rigorosa (SRA)\" após a aprovação. Nenhuma data, status ou número foi alterado."
+      },
       {
         "date": "2026-11-05",
         "product": "ASPY, DHA–PPQ",
