@@ -20,7 +20,12 @@ import {
 	stalledSince,
 	type PathwayDisplay,
 } from "@/app/[locale]/unitaid/utils/pathway";
-import { statusShown, yrsText, type StageContext } from "@/app/[locale]/unitaid/utils/stages";
+import {
+	stageNamesFor,
+	statusShown,
+	yrsText,
+	type StageContext,
+} from "@/app/[locale]/unitaid/utils/stages";
 import { fill, pageText } from "@/app/[locale]/unitaid/utils/strings";
 import { Cites } from "./Cites";
 import { fillNodes } from "./fillNodes";
@@ -108,7 +113,7 @@ export function GatePanelContent({
 	return (
 		<>
 			<div className="gp-head">
-				<span className="gp-stage">{ctx.stages[i]}</span>
+				<span className="gp-stage">{stageNamesFor(ctx.generalStages, ctx.doneNames, p)[i]}</span>
 				{shown ? (
 					<span className={`gp-pill ${st.status}`}>{pageText(ctx.locale).status[st.status]}</span>
 				) : null}

@@ -13,7 +13,7 @@ import type { Product, Source, Status } from "../lib/dataset";
 import { DATE_LOCALE, type Citation } from "./format";
 import type { Locale } from "./locales";
 import { tracked } from "./pathway";
-import { DISPLAY, applyShowLate, statusShown, type Display } from "./stages";
+import { DISPLAY, applyShowLate, stageNamesFor, statusShown, type Display } from "./stages";
 import { fill, pageText } from "./strings";
 
 /**
@@ -98,6 +98,8 @@ export function csvRows(
 	locale: Locale,
 	text: CsvText,
 	display: Display = DISPLAY,
+	/** stageInfo[i].doneName: a completed step's name (stage 2: Approval) */
+	doneNames: readonly (string | null)[] = [],
 ): unknown[][] {
 	const label: Record<Status, string> = pageText(locale).status;
 	const c = text.columns;
@@ -116,11 +118,12 @@ export function csvRows(
 		],
 	];
 	for (const p of tracked(applyShowLate([...products], display))) {
+		const names = stageNamesFor(stages, doneNames, p);
 		p.stages.forEach((s, i) =>
 			rows.push([
 				p.name,
 				text.stageRow,
-				stages[i],
+				names[i],
 				statusShown(p, s.status, display) ? label[s.status] : "",
 				s.note,
 				s.date,

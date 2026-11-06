@@ -16,7 +16,7 @@ import {
 import { journeyLayout } from "@/app/[locale]/unitaid/utils/board";
 import type { Product } from "@/app/[locale]/unitaid/lib/dataset";
 import { firstClause } from "@/app/[locale]/unitaid/utils/format";
-import { accessLine, statusShown } from "@/app/[locale]/unitaid/utils/stages";
+import { accessLine, forProduct, statusShown } from "@/app/[locale]/unitaid/utils/stages";
 import { fill } from "@/app/[locale]/unitaid/utils/strings";
 import { accessInfo, countryCell, marketCell } from "./access";
 import { productDetail } from "./detail";
@@ -58,7 +58,7 @@ export interface ProductRowProps {
 
 export function ProductRow({
 	p,
-	s,
+	s: board0,
 	open,
 	openSeq,
 	highlightCol,
@@ -67,6 +67,9 @@ export function ProductRow({
 	hooks,
 	reduceMotion,
 }: ProductRowProps) {
+	// Inside the row the steps carry this medicine's names: stage 2 reads
+	// "Approval" once it is completed, "Review" before (6 Nov 2026).
+	const s = useMemo(() => ({ ...board0, ctx: forProduct(board0.ctx, p) }), [board0, p]);
 	const { ctx, text, board } = s;
 	// null until the reader switches: the page set data-view only then
 	const [view, setView] = useState<View | null>(null);

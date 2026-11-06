@@ -18,7 +18,7 @@ import {
 	type SourceLists,
 } from "@/app/[locale]/unitaid/utils/frame";
 import type { Locale } from "@/app/[locale]/unitaid/utils/locales";
-import { DISPLAY, type Display } from "@/app/[locale]/unitaid/utils/stages";
+import { DISPLAY, doneNamesOf, type Display } from "@/app/[locale]/unitaid/utils/stages";
 import type { FrameText } from "./text";
 
 export interface FrameView {
@@ -46,7 +46,9 @@ export function frameView(
 		updated: lastUpdatedText(data.meta.lastUpdated, locale, text.header.lastUpdated),
 		banner: statusBanner(data.meta.dataStatus),
 		csv: {
-			text: csvText(csvRows(data.products, data.stages, locale, text.csv, display)),
+			text: csvText(
+				csvRows(data.products, data.stages, locale, text.csv, display, doneNamesOf(data.stageInfo)),
+			),
 			fileName: csvFileName(data.meta.lastUpdated),
 		},
 		sources: sourceLists(ds.sources.sources, locale),
