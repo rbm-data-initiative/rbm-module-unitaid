@@ -58,13 +58,14 @@ export interface StageContext {
 	locale: Locale;
 	/**
 	 * stage names, in the page's language. Inside one medicine's row they are
-	 * that medicine's names (forProduct): a completed step reads its doneName.
+	 * that medicine's names (forProduct): a step it has not completed reads its
+	 * pendingName.
 	 */
 	stages: string[];
 	/** data.stages: the steps named in general, whatever context this is */
 	generalStages: string[];
-	/** stageInfo[i].doneName: a step's name on a medicine that has completed it */
-	doneNames: (string | null)[];
+	/** stageInfo[i].pendingName: a step's name on a medicine that has not completed it */
+	pendingNames: (string | null)[];
 	stageColumns: StageColumn[];
 	yardstick: Yardstick | null;
 	/**
@@ -75,28 +76,33 @@ export interface StageContext {
 	display: Display;
 }
 
-/** stageInfo[i].doneName for each step, null where the step has one name only. */
-export function doneNamesOf(stageInfo: LaunchData["stageInfo"]): (string | null)[] {
-	return (stageInfo || []).map((x: StageInfo | null) => (x && x.doneName) || null);
+/** stageInfo[i].pendingName for each step, null where the step has one name only. */
+export function pendingNamesOf(stageInfo: LaunchData["stageInfo"]): (string | null)[] {
+	return (stageInfo || []).map((x: StageInfo | null) => (x && x.pendingName) || null);
 }
 
 /**
- * One medicine's step names (6 Nov 2026): stage 2 reads "Stringent Regulatory
- * Review (SRA)" (data.stages) until the medicine has completed it, then
- * "Stringent Regulatory Approval (SRA)" (stageInfo[1].doneName). The static
- * page's stageNamesFor(p).
+ * One medicine's step names (6 Nov 2026): stage 2 is "Stringent Regulatory
+ * Approval (SRA)" (data.stages) in general and once the medicine has completed
+ * it; before, it reads the medicine's own stages[1].pendingName (GanLum:
+ * "Stringent Health Authority Review (SRA)") or stageInfo[1].pendingName
+ * ("Stringent Regulatory Review (SRA)"). The static page's stageNamesFor(p).
  */
 export function stageNamesFor(
 	stages: readonly string[],
-	doneNames: readonly (string | null)[],
-	p: { stages: readonly { status: Status }[] },
+	pendingNames: readonly (string | null)[],
+	p: { stages: readonly { status: Status; pendingName?: unknown }[] },
 ): string[] {
-	return stages.map((n, i) => (p.stages[i] && p.stages[i].status === "done" && doneNames[i]) || n);
+	return stages.map((n, i) => {
+		const st = p.stages[i];
+		if (!st || st.status === "done") return n;
+		return (typeof st.pendingName === "string" && st.pendingName) || pendingNames[i] || n;
+	});
 }
 
 /** The context inside one medicine's row: its own step names. */
 export function forProduct(ctx: StageContext, p: Product): StageContext {
-	return { ...ctx, stages: stageNamesFor(ctx.generalStages, ctx.doneNames, p) };
+	return { ...ctx, stages: stageNamesFor(ctx.generalStages, ctx.pendingNames, p) };
 }
 
 /** ASOF_YEAR: the year of the dataset's lastUpdated date. */
@@ -113,7 +119,7 @@ export function stageContext(
 		locale,
 		stages: data.stages,
 		generalStages: data.stages,
-		doneNames: doneNamesOf(data.stageInfo),
+		pendingNames: pendingNamesOf(data.stageInfo),
 		// without stageColumns, every stage is its own column
 		stageColumns: data.stageColumns || data.stages.map((_, i) => ({ stages: [i] })),
 		yardstick: data.yardstick || null,

@@ -153,11 +153,7 @@ export function journeyTime(
 				data-tier={it.tier}
 				style={{ left: `${it.x}%`, height: `${top - 32}px` }}
 			></i>,
-			<i
-				key={`p${it.i}`}
-				className={`pt${it.cur ? " " + st.status : ""}`}
-				style={{ left: `${it.x}%` }}
-			></i>,
+			<i key={`p${it.i}`} className={`pt ${st.status}`} style={{ left: `${it.x}%` }}></i>,
 			<div
 				key={`i${it.i}`}
 				className={`it stage s-${st.status}${it.cur ? " cur" : ""}`}
@@ -235,8 +231,7 @@ export function journeyTime(
 						</span>,
 					])}
 					<span className="tk now" style={{ left: `${L.nowX}%` }}>
-						{`${L.hi} `}
-						<i>{text.today}</i>
+						{L.hi}
 					</span>
 					<i className="today" style={{ left: `${L.nowX}%`, height: `${TIMELINE.TOP - 20}px` }}></i>
 					{L.run ? (

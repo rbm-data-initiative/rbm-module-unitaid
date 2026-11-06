@@ -150,7 +150,7 @@ export function StagePeek({
 	const line = peekLineFor(p, ctx)(st.status, st.date, st.nextDate);
 	return (
 		<>
-			<b>{stageNamesFor(ctx.generalStages, ctx.doneNames, p)[i]}</b>
+			<b>{stageNamesFor(ctx.generalStages, ctx.pendingNames, p)[i]}</b>
 			{line ? <div>{line}</div> : null}
 			<div className="thint">{text.clickForDetail}</div>
 		</>

@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T05:53:35.539Z",
-  "approved_at": "2026-11-06T05:53:35.539Z",
+  "generated_at": "2026-11-06T07:23:56.352Z",
+  "approved_at": "2026-11-06T07:23:56.353Z",
   "approved_by": "codebyjackson",
   "approval": {
     "trigger": "manual",
     "issue": null,
     "pr": null,
-    "reason": "Stage 2: Stringent Regulatory Review (SRA) until completed (PR #153)"
+    "reason": "Stage 2 names, timeline dots, no today; GanLum shown as Ganaplacide-lumefantrine / KLU156 (PRs #154, #155, #156)"
   },
-  "pipeline_commit": "0b5bfc337fd3780cf063c8c6735f933788deb6d1",
-  "content_hash": "96429fd5f0a423740048be4c8ba4a55a5e850346b94c33bade8041eca8c513ef",
+  "pipeline_commit": "91bb29cd8ccc441eb5f807c4194f0df88d4b19c9",
+  "content_hash": "026194bf78401f36b63fc59149f8fb5422ce5521764c367e62732184463e629a",
   "locale": "fr",
   "data_status": "draft",
   "last_updated": "2026-11-06",
@@ -398,7 +398,7 @@
     "host": "RBM Partnership to End Malaria",
     "stages": [
       "R&D et essais cliniques",
-      "Examen réglementaire rigoureux (SRA)",
+      "Approbation d’une autorité de réglementation rigoureuse (SRA)",
       "Recommandation de l’OMS",
       "Préqualification de l’OMS",
       "Enregistrement national",
@@ -456,7 +456,7 @@
         "who": "L’EMA, ou une autre autorité de réglementation rigoureuse comme la Food and Drug Administration (FDA) des États-Unis.",
         "stall": "Préparer l’ensemble du dossier, puis attendre la fin de l’examen.",
         "source": "Les registres de l’EMA.",
-        "doneName": "Approbation d’une autorité de réglementation rigoureuse (SRA)"
+        "pendingName": "Examen réglementaire rigoureux (SRA)"
       },
       {
         "what": "Le Groupe d'élaboration des lignes directrices (GDG) de l'OMS pour le paludisme examine les preuves graduées (GRADE) sur un médicament antipaludique et d'autres critères, et s'accorde par consensus sur la direction et la force de chaque recommandation dans les lignes directrices de l'OMS pour le paludisme.",
@@ -544,8 +544,13 @@
     "changelog": [
       {
         "date": "2026-11-06",
+        "product": "Ganaplacide–lumefantrine",
+        "plain": "Ce médicament figure désormais sous son nom complet, Ganaplacide–lumefantrine, avec son code de développement KLU156. Il figurait auparavant sous le nom GanLum."
+      },
+      {
+        "date": "2026-11-06",
         "product": "All",
-        "plain": "La deuxième étape est désormais appelée « Examen réglementaire rigoureux (SRA) » tant qu'un médicament est en attente d'autorisation, et « Autorisation réglementaire rigoureuse (SRA) » une fois qu'il a été autorisé. Aucune date, aucun statut ni aucun chiffre n'ont été modifiés."
+        "plain": "La deuxième étape s’intitule « Approbation d’une autorité de réglementation rigoureuse (SRA) ». Un médicament qui ne l’a pas encore franchie affiche « Examen réglementaire rigoureux (SRA) », et Ganaplacide–lumefantrine affiche « Examen rigoureux des autorités sanitaires (SRA) ». Aucune date, aucun statut ni aucun chiffre n’a été modifié."
       },
       {
         "date": "2026-11-05",
@@ -751,8 +756,8 @@
     "products": [
       {
         "id": "ganlum",
-        "name": "GanLum",
-        "inn": "Ganaplacide–lumefantrine (KLU156)",
+        "name": "Ganaplacide–lumefantrine",
+        "inn": "KLU156",
         "manufacturer": "Novartis",
         "acknowledgement": "Développé par Novartis avec le soutien scientifique et financier de MMV, dans le cadre du consortium WANECAM2, financé par le partenariat des pays européens et en développement sur les essais cliniques, soutenu par l’Union européenne, avec un cofinancement du Centre aérospatial allemand et du ministère britannique de la Santé et des Affaires sociales.",
         "class": "pipeline",
@@ -777,6 +782,7 @@
           },
           {
             "status": "idle",
+            "pendingName": "Examen rigoureux des autorités sanitaires (SRA)",
             "note": "Dossier réglementaire en préparation à la suite du succès de la phase III ; aucun dépôt annoncé en date du 15 octobre 2026",
             "date": "Dossier réglementaire en préparation",
             "next": "Dépôt du dossier (via la SRA)",

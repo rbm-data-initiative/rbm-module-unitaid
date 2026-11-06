@@ -113,7 +113,7 @@ export function GatePanelContent({
 	return (
 		<>
 			<div className="gp-head">
-				<span className="gp-stage">{stageNamesFor(ctx.generalStages, ctx.doneNames, p)[i]}</span>
+				<span className="gp-stage">{stageNamesFor(ctx.generalStages, ctx.pendingNames, p)[i]}</span>
 				{shown ? (
 					<span className={`gp-pill ${st.status}`}>{pageText(ctx.locale).status[st.status]}</span>
 				) : null}

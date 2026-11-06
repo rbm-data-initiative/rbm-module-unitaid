@@ -1588,6 +1588,11 @@
 .launch-dashboard .tsa .pt.late {
 	background: var(--crit);
 }
+/* every dot on the year line has its stage's colour (6 Nov 2026): green
+   completed, amber started, grey not started */
+.launch-dashboard .tsa .pt.idle {
+	background: var(--idle);
+}
 .launch-dashboard .tsa .stem {
 	position: absolute;
 	top: 32px;

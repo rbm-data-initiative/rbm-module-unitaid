@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T05:53:35.539Z",
-  "approved_at": "2026-11-06T05:53:35.539Z",
+  "generated_at": "2026-11-06T07:23:56.352Z",
+  "approved_at": "2026-11-06T07:23:56.353Z",
   "approved_by": "codebyjackson",
   "approval": {
     "trigger": "manual",
     "issue": null,
     "pr": null,
-    "reason": "Stage 2: Stringent Regulatory Review (SRA) until completed (PR #153)"
+    "reason": "Stage 2 names, timeline dots, no today; GanLum shown as Ganaplacide-lumefantrine / KLU156 (PRs #154, #155, #156)"
   },
-  "pipeline_commit": "0b5bfc337fd3780cf063c8c6735f933788deb6d1",
-  "content_hash": "96429fd5f0a423740048be4c8ba4a55a5e850346b94c33bade8041eca8c513ef",
+  "pipeline_commit": "91bb29cd8ccc441eb5f807c4194f0df88d4b19c9",
+  "content_hash": "026194bf78401f36b63fc59149f8fb5422ce5521764c367e62732184463e629a",
   "locale": "en",
   "data_status": "draft",
   "last_updated": "2026-11-06",
@@ -398,7 +398,7 @@
     "host": "RBM Partnership to End Malaria",
     "stages": [
       "R&D and Clinical",
-      "Stringent Regulatory Review (SRA)",
+      "Stringent Regulatory Approval (SRA)",
       "WHO recommendation",
       "WHO PQ listing",
       "Country registration",
@@ -456,7 +456,7 @@
         "who": "EMA, or another stringent regulator such as the US FDA",
         "stall": "Preparing the full dossier, then waiting out the review.",
         "source": "EMA registers",
-        "doneName": "Stringent Regulatory Approval (SRA)"
+        "pendingName": "Stringent Regulatory Review (SRA)"
       },
       {
         "what": "WHO's Guideline Development Group (GDG) for malaria reviews the graded evidence (GRADE) on an antimalarial medicine and other criteria, and agrees by consensus on the direction and strength of each recommendation in the WHO Guidelines for malaria.",
@@ -544,8 +544,13 @@
     "changelog": [
       {
         "date": "2026-11-06",
+        "product": "Ganaplacide–lumefantrine",
+        "plain": "This medicine is now listed under its full name, Ganaplacide–lumefantrine, with its development code KLU156. It was listed as GanLum."
+      },
+      {
+        "date": "2026-11-06",
         "product": "All",
-        "plain": "The second step is now called \"Stringent Regulatory Review (SRA)\" while a medicine is still waiting for approval, and \"Stringent Regulatory Approval (SRA)\" once it has been approved. No dates, statuses or figures changed."
+        "plain": "The second step is called \"Stringent Regulatory Approval (SRA)\". A medicine that has not yet completed it shows \"Stringent Regulatory Review (SRA)\" instead, and Ganaplacide–lumefantrine shows \"Stringent Health Authority Review (SRA)\". No dates, statuses or figures changed."
       },
       {
         "date": "2026-11-05",
@@ -751,8 +756,8 @@
     "products": [
       {
         "id": "ganlum",
-        "name": "GanLum",
-        "inn": "Ganaplacide–lumefantrine (KLU156)",
+        "name": "Ganaplacide–lumefantrine",
+        "inn": "KLU156",
         "manufacturer": "Novartis",
         "acknowledgement": "Developed by Novartis with the scientific and financial support of MMV, and within the framework of the WANECAM2 consortium, funded by the European & Developing Countries Clinical Trials Partnership Programme supported by the European Union, with co-funding from the German Aerospace Center and the UK Department of Health and Social Care.",
         "class": "pipeline",
@@ -777,6 +782,7 @@
           },
           {
             "status": "idle",
+            "pendingName": "Stringent Health Authority Review (SRA)",
             "note": "Regulatory submission in preparation following Phase III success; no filing announced as of 15 Oct 2026",
             "date": "Regulatory submission in preparation",
             "next": "Dossier submission (SRA pathway)",
