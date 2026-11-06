@@ -229,41 +229,13 @@
 }
 
 /* ---------- header ---------- */
-/* Two rows (sheet rows 18/20 follow-up, 30 Sep 2026):
-       1. title on the left, "Powered by" Unitaid logo on the right (the
-          Prototype pill after the title was removed by request, 15 Oct 2026)
-       2. the description with "Last updated" under it on the left, Download
-          CSV + Subscribe on the right, bottom-aligned with the date
-          (capped at 120ch, balanced wrapping)
-     Replaces the old brand/meta two-column header, which left the middle empty
-     and stacked the logo, date and buttons in one right-hand column. */
+/* One row: "Last updated" on the left, Download CSV + Subscribe on the right,
+     bottom-aligned with the date. The title, the description and "Powered by"
+     Unitaid moved into the photo header above the dashboard
+     (components/HostHero.tsx, Unitaid, 6 Nov 2026), so their rules (.hd-top,
+     .hd-title, .hd-desc, .attrib) went with them. */
 .launch-dashboard header {
 	margin-bottom: 6px;
-}
-.launch-dashboard .hd-top {
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	gap: 12px 24px;
-}
-.launch-dashboard .hd-title {
-	margin: 0;
-	font-size: 26px;
-	font-weight: 750;
-	letter-spacing: -.01em;
-}
-.launch-dashboard .hd-title span {
-	color: var(--accent);
-}
-/* text-wrap: balance splits a two-line description into two even lines, so
-     the last word never sits alone on a second line (it did at ~1800px with the
-     plain 160ch cap). */
-.launch-dashboard .hd-desc {
-	margin: 0;
-	color: var(--ink-2);
-	font-size: 15px;
-	max-width: 120ch;
-	text-wrap: balance;
 }
 .launch-dashboard .hd-bar {
 	display: flex;
@@ -273,10 +245,11 @@
 	gap: 10px 24px;
 	margin-top: 6px;
 }
-/* 500px minimum: below roughly 860px of content the buttons would squeeze the
-     description into four short lines, so they wrap under it instead. */
+/* Only the date now: its own width, so the buttons stay on its row until
+     they no longer fit. (It was 500px while it also held the description, so
+     the buttons would not squeeze that into four short lines.) */
 .launch-dashboard .hd-text {
-	flex: 1 1 500px;
+	flex: 1 1 auto;
 	min-width: 0;
 }
 .launch-dashboard .hd-status {
@@ -284,38 +257,6 @@
 	font-size: 13px;
 	color: var(--ink-3);
 	line-height: 1.5;
-}
-/* "Powered by" + the Unitaid logo. No plate, border, shadow or hover
-     effect (sheet row 11 follow-up): the logo sits directly on the page
-     background and blends in. The logo's SVG has no background of its own,
-     and its navy holds on the light gray page ground, so it needs no plate.
-     Keyboard focus keeps its outline. */
-.launch-dashboard .attrib {
-	flex: none;
-	display: flex;
-	justify-content: flex-end;
-}
-.launch-dashboard .attrib a {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	padding: 2px 0;
-	border-radius: 4px;
-	text-decoration: none;
-}
-.launch-dashboard .attrib a:focus-visible {
-	outline: 2px solid var(--accent);
-	outline-offset: 2px;
-}
-.launch-dashboard .attrib .ptxt {
-	font-size: 12.5px;
-	line-height: 1.3;
-	color: var(--ink-3);
-}
-.launch-dashboard .attrib img {
-	display: block;
-	width: 112px;
-	height: auto;
 }
 .launch-dashboard .demo-banner {
 	margin: 10px 0 12px;
@@ -4588,19 +4529,8 @@
 	.launch-dashboard .wrap {
 		padding: 20px 14px 48px;
 	}
-	.launch-dashboard .hd-title {
-		font-size: 20px;
-		line-height: 1.25;
-	}
-	/* Same rows as desktop. The logo shrinks and keeps its top-right place,
-       and the last row wraps: date on top, the two buttons sharing the row
-       below at equal width. */
-	.launch-dashboard .attrib img {
-		width: 72px;
-	}
-	.launch-dashboard .attrib .ptxt {
-		display: none;
-	}
+	/* The row wraps: date on top, the two buttons sharing the row below at
+       equal width. */
 	/* The button row is full width by rule, not by stretching (8 Oct 2026).
        On an iPhone it came out as wide as its own words: 289 of 362px in
        English (two 140px buttons), 354 in Portuguese, while French and
@@ -4777,7 +4707,6 @@
 	font-family: var(--font-launch), "Source Sans 3", Arial, sans-serif;
 }
 /* headings in the brand's Bold, navy */
-.launch-dashboard .hd-title,
 .launch-dashboard .viz h2,
 .launch-dashboard .disclaimer h3,
 .launch-dashboard .srcs-title,
