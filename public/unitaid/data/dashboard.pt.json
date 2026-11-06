@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T05:53:35.539Z",
-  "approved_at": "2026-11-06T05:53:35.539Z",
+  "generated_at": "2026-11-06T07:23:56.352Z",
+  "approved_at": "2026-11-06T07:23:56.353Z",
   "approved_by": "codebyjackson",
   "approval": {
     "trigger": "manual",
     "issue": null,
     "pr": null,
-    "reason": "Stage 2: Stringent Regulatory Review (SRA) until completed (PR #153)"
+    "reason": "Stage 2 names, timeline dots, no today; GanLum shown as Ganaplacide-lumefantrine / KLU156 (PRs #154, #155, #156)"
   },
-  "pipeline_commit": "0b5bfc337fd3780cf063c8c6735f933788deb6d1",
-  "content_hash": "96429fd5f0a423740048be4c8ba4a55a5e850346b94c33bade8041eca8c513ef",
+  "pipeline_commit": "91bb29cd8ccc441eb5f807c4194f0df88d4b19c9",
+  "content_hash": "026194bf78401f36b63fc59149f8fb5422ce5521764c367e62732184463e629a",
   "locale": "pt",
   "data_status": "draft",
   "last_updated": "2026-11-06",
@@ -398,7 +398,7 @@
     "host": "RBM Partnership to End Malaria",
     "stages": [
       "P&D e Área Clínica",
-      "Análise regulatória rigorosa (SRA)",
+      "Aprovação Regulatória Rigorosa (SRA)",
       "Recomendação da OMS",
       "Listagem de pré-qualificação da OMS",
       "Registro de país",
@@ -456,7 +456,7 @@
         "who": "EMA ou outra autoridade reguladora rigorosa, como a FDA dos EUA.",
         "stall": "Preparar o dossiê completo e, em seguida, aguardar a conclusão da análise.",
         "source": "Registros da EMA",
-        "doneName": "Aprovação Regulatória Rigorosa (SRA)"
+        "pendingName": "Análise regulatória rigorosa (SRA)"
       },
       {
         "what": "O Grupo de Desenvolvimento de Diretrizes (GDG) da OMS para malária analisa as evidências classificadas (GRADE) sobre um medicamento antimalárico e outros critérios, e chega a um consenso sobre a direção e a força de cada recomendação nas Diretrizes da OMS para malária.",
@@ -544,8 +544,13 @@
     "changelog": [
       {
         "date": "2026-11-06",
+        "product": "Ganaplacide–lumefantrine",
+        "plain": "Este medicamento agora aparece com o seu nome completo, Ganaplacide–lumefantrine, e o código de desenvolvimento KLU156. Antes aparecia como GanLum."
+      },
+      {
+        "date": "2026-11-06",
         "product": "All",
-        "plain": "A segunda etapa agora é chamada de \"Análise Regulatória Rigorosa (SRA)\" enquanto um medicamento ainda aguarda aprovação, e \"Aprovação Regulatória Rigorosa (SRA)\" após a aprovação. Nenhuma data, status ou número foi alterado."
+        "plain": "A segunda etapa é chamada de \"Aprovação Regulatória Rigorosa (SRA)\". Um medicamento que ainda não a concluiu mostra \"Análise regulatória rigorosa (SRA)\" em vez disso, e o Ganaplacide–lumefantrine mostra \"Análise rigorosa da autoridade sanitária (SRA)\". Nenhuma data, status ou número foi alterado."
       },
       {
         "date": "2026-11-05",
@@ -751,8 +756,8 @@
     "products": [
       {
         "id": "ganlum",
-        "name": "GanLum",
-        "inn": "Ganaplacide–lumefantrine (KLU156)",
+        "name": "Ganaplacide–lumefantrine",
+        "inn": "KLU156",
         "manufacturer": "Novartis",
         "acknowledgement": "Desenvolvido pela Novartis com o apoio científico e financeiro da MMV e no âmbito do consórcio WANECAM2, financiado pelo Programa de Parceria para Ensaios Clínicos entre Países Europeus e Países em Desenvolvimento, apoiado pela União Europeia, com cofinanciamento do Centro Aeroespacial Alemão e do Departamento de Saúde e Assistência Social do Reino Unido.",
         "class": "pipeline",
@@ -777,6 +782,7 @@
           },
           {
             "status": "idle",
+            "pendingName": "Análise rigorosa da autoridade sanitária (SRA)",
             "note": "Submissão regulatória em preparação após o sucesso da fase III; nenhum pedido de registro anunciado até 15 de outubro de 2026",
             "date": "Submissão regulatória em preparação",
             "next": "Submissão do dossiê (processo de SRA)",
