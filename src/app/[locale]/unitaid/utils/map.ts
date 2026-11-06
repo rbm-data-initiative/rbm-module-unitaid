@@ -15,7 +15,7 @@
 import type { Localized } from "../lib/dataset";
 import type { Locale } from "./locales";
 import { countryStages, tracked, type StageSet } from "./pathway";
-import { doneNamesOf, stageNamesFor } from "./stages";
+import { pendingNamesOf, stageNamesFor } from "./stages";
 
 // ---- the fixed vocabulary ----------------------------------------------------
 
@@ -286,7 +286,7 @@ export interface MapProduct {
 	inn: string;
 	class: string;
 	currentStage: number;
-	/** the current step's name for this medicine (a completed step reads its doneName) */
+	/** the current step's name for this medicine (a step it has not completed reads its pendingName) */
 	stageName: string;
 	flag: string | null;
 	/** detail.countries, or null when the medicine has none (pre-launch) */
@@ -372,7 +372,7 @@ export function mapInput(ds: Localized, countries: MapCountries, locale: Locale)
 			class: p.class,
 			currentStage: p.currentStage,
 			stageName:
-				stageNamesFor(ds.data.stages, doneNamesOf(ds.data.stageInfo), p)[p.currentStage] || "",
+				stageNamesFor(ds.data.stages, pendingNamesOf(ds.data.stageInfo), p)[p.currentStage] || "",
 			flag: p.flag ? String(p.flag) : null,
 			// truthiness, as the old `p.detail.countries ? ... : ...`; each entry
 			// keeps only what the map reads (not its note or MFT detail)

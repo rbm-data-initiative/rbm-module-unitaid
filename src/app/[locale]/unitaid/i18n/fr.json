@@ -110,7 +110,6 @@
 			"dotTitle": "{stage}: {status}",
 			"parallelGroupLabel": "{names} – approbations indépendantes, sans ordre particulier",
 			"timeline": {
-				"today": "aujourd’hui",
 				"since": "depuis {milestone} ({year}) · {duration}",
 				"sinceYear": "depuis {year}",
 				"reachedNoYear": "Atteint · année non consignée",

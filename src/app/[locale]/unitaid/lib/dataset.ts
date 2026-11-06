@@ -53,6 +53,8 @@ export interface StageEntry {
 	source?: string;
 	asOf?: string;
 	sources?: string[];
+	/** this medicine's name for the step until it completes it (GanLum's stage 2) */
+	pendingName?: string;
 	[key: string]: unknown;
 }
 
@@ -234,8 +236,8 @@ export interface StageInfo {
 	who: string;
 	stall: string;
 	source: string;
-	/** the step's name on a medicine that has completed it (stage 2: Approval, not Review) */
-	doneName?: string;
+	/** the step's name on a medicine that has not completed it (stage 2: Review, not Approval) */
+	pendingName?: string;
 }
 
 /** Same shape as window.LAUNCH_DATA on the static pages. */

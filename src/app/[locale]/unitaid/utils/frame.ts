@@ -98,8 +98,8 @@ export function csvRows(
 	locale: Locale,
 	text: CsvText,
 	display: Display = DISPLAY,
-	/** stageInfo[i].doneName: a completed step's name (stage 2: Approval) */
-	doneNames: readonly (string | null)[] = [],
+	/** stageInfo[i].pendingName: a step's name before it is completed (stage 2: Review) */
+	pendingNames: readonly (string | null)[] = [],
 ): unknown[][] {
 	const label: Record<Status, string> = pageText(locale).status;
 	const c = text.columns;
@@ -118,7 +118,7 @@ export function csvRows(
 		],
 	];
 	for (const p of tracked(applyShowLate([...products], display))) {
-		const names = stageNamesFor(stages, doneNames, p);
+		const names = stageNamesFor(stages, pendingNames, p);
 		p.stages.forEach((s, i) =>
 			rows.push([
 				p.name,

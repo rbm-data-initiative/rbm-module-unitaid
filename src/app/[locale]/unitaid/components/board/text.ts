@@ -57,8 +57,6 @@ export interface BoardText {
 	markLabel: string;
 
 	// The Actual timeline view
-	/** beside today's year on the axis */
-	today: string;
 	/** under the current gate; {years} is yrsText's */
 	since: string;
 	/** under a started gate placed at the year its date gives: "since {year}" */
@@ -175,7 +173,6 @@ export function boardText(locale: Locale): BoardText {
 		miniLabel: m.board.milestonesComplete,
 		dotTitle: m.product.dotTitle,
 		markLabel: rename(m.product.stageMarkerLabel, { status: "peek" }),
-		today: tl.today,
 		since: rename(tl.since, { milestone: "label", duration: "years" }),
 		startedSince: tl.sinceYear,
 		chipLate: tl.delayed,
