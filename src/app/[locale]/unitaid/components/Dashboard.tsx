@@ -47,8 +47,6 @@ import { applyShowLate, stageContext } from "@/app/[locale]/unitaid/utils/stages
 
 /** Where the dashboard's files are served from (the module: public/unitaid/). */
 export interface DashboardAssets {
-	/** unitaid-logo.svg */
-	logo: string;
 	/** the WHO emblem; WHO_EMBLEM_SRC when left out */
 	whoEmblem?: string;
 	/** world-shapes.json */
@@ -168,13 +166,7 @@ export function Dashboard({
 	);
 
 	return (
-		<DashboardFrame
-			text={ftext}
-			view={frameView}
-			formsEnabled={formsEnabled}
-			logoSrc={assets.logo}
-			outside={outside}
-		>
+		<DashboardFrame text={ftext} view={frameView} formsEnabled={formsEnabled} outside={outside}>
 			<Pathway
 				ctx={ctx}
 				products={listed}

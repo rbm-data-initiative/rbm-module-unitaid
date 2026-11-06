@@ -3,23 +3,21 @@ import { Subscribe } from "./Subscribe";
 import type { HeaderText, SubscribeText } from "./text";
 
 /**
- * The header: title, "Powered by" Unitaid, the description, the "Last
- * updated" line, Download CSV and Subscribe for updates. Subscribe is left
+ * The bar under the photo header: the "Last updated" line, Download CSV and
+ * Subscribe for updates. The title, the description and "Powered by" Unitaid
+ * moved into the photo header (HostHero) on 6 Nov 2026. Subscribe is left
  * out when the forms are off (`subscribe` null), as the static build
  * hides it with `--api-url none`.
  */
 export function Header({
 	text,
 	subscribeText,
-	logoSrc,
 	updated,
 	csv,
 	subscribe,
 }: {
 	text: HeaderText;
 	subscribeText: SubscribeText;
-	/** where the host serves assets/unitaid-logo.svg */
-	logoSrc: string;
 	/** "Last updated 19 Oct 2026" (frameView) */
 	updated: string;
 	/** the download; null hides the button, as the page did when it had no data */
@@ -28,18 +26,8 @@ export function Header({
 }) {
 	return (
 		<header>
-			<div className="hd-top">
-				<h1 className="hd-title">{text.title}</h1>
-				<div className="attrib">
-					<a href="https://unitaid.org" target="_blank" rel="noopener noreferrer">
-						<span className="ptxt">{text.poweredBy}</span>
-						<img src={logoSrc} alt={text.logoAlt} width="1200" height="418" />
-					</a>
-				</div>
-			</div>
 			<div className="hd-bar">
 				<div className="hd-text">
-					<p className="hd-desc">{text.subtitle}</p>
 					<div className="hd-status">
 						<span id="updated">{updated}</span>
 					</div>
