@@ -36,7 +36,7 @@ export function yardNote(s: Scope, key?: string): ReactElement | null {
 	if (!yard) return null;
 	const by = (b: string) =>
 		yard.expected
-			.map((e, i) => (e && e.basis === b ? s.ctx.stages[i] : null))
+			.map((e, i) => (e && e.basis === b ? s.ctx.generalStages[i] : null))
 			.filter(Boolean)
 			.join(", ");
 	// each sentence is followed by a space, as on the page: the two sit in one line

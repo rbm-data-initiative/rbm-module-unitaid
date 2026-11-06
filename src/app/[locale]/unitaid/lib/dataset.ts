@@ -234,6 +234,8 @@ export interface StageInfo {
 	who: string;
 	stall: string;
 	source: string;
+	/** the step's name on a medicine that has completed it (stage 2: Approval, not Review) */
+	doneName?: string;
 }
 
 /** Same shape as window.LAUNCH_DATA on the static pages. */

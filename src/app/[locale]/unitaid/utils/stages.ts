@@ -12,6 +12,7 @@ import type {
 	Product,
 	StageColumn,
 	StageEntry,
+	StageInfo,
 	Status,
 	Yardstick,
 	YardstickStep,
@@ -55,8 +56,15 @@ export const DISPLAY: Display = {
 /** What the stage rules read besides the product: the page's data and switches. */
 export interface StageContext {
 	locale: Locale;
-	/** stage names, in the page's language */
+	/**
+	 * stage names, in the page's language. Inside one medicine's row they are
+	 * that medicine's names (forProduct): a completed step reads its doneName.
+	 */
 	stages: string[];
+	/** data.stages: the steps named in general, whatever context this is */
+	generalStages: string[];
+	/** stageInfo[i].doneName: a step's name on a medicine that has completed it */
+	doneNames: (string | null)[];
 	stageColumns: StageColumn[];
 	yardstick: Yardstick | null;
 	/**
@@ -65,6 +73,30 @@ export interface StageContext {
 	 */
 	asOfYear: number;
 	display: Display;
+}
+
+/** stageInfo[i].doneName for each step, null where the step has one name only. */
+export function doneNamesOf(stageInfo: LaunchData["stageInfo"]): (string | null)[] {
+	return (stageInfo || []).map((x: StageInfo | null) => (x && x.doneName) || null);
+}
+
+/**
+ * One medicine's step names (6 Nov 2026): stage 2 reads "Stringent Regulatory
+ * Review (SRA)" (data.stages) until the medicine has completed it, then
+ * "Stringent Regulatory Approval (SRA)" (stageInfo[1].doneName). The static
+ * page's stageNamesFor(p).
+ */
+export function stageNamesFor(
+	stages: readonly string[],
+	doneNames: readonly (string | null)[],
+	p: { stages: readonly { status: Status }[] },
+): string[] {
+	return stages.map((n, i) => (p.stages[i] && p.stages[i].status === "done" && doneNames[i]) || n);
+}
+
+/** The context inside one medicine's row: its own step names. */
+export function forProduct(ctx: StageContext, p: Product): StageContext {
+	return { ...ctx, stages: stageNamesFor(ctx.generalStages, ctx.doneNames, p) };
 }
 
 /** ASOF_YEAR: the year of the dataset's lastUpdated date. */
@@ -80,6 +112,8 @@ export function stageContext(
 	return {
 		locale,
 		stages: data.stages,
+		generalStages: data.stages,
+		doneNames: doneNamesOf(data.stageInfo),
 		// without stageColumns, every stage is its own column
 		stageColumns: data.stageColumns || data.stages.map((_, i) => ({ stages: [i] })),
 		yardstick: data.yardstick || null,

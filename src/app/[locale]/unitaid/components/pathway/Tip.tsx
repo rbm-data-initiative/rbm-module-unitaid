@@ -23,7 +23,7 @@ import {
 	type RefObject,
 } from "react";
 import type { Product } from "@/app/[locale]/unitaid/lib/dataset";
-import { peekLineFor, type StageContext } from "@/app/[locale]/unitaid/utils/stages";
+import { peekLineFor, stageNamesFor, type StageContext } from "@/app/[locale]/unitaid/utils/stages";
 import type { PathwayText } from "./text";
 
 /** What an area may do with the hint. */
@@ -150,7 +150,7 @@ export function StagePeek({
 	const line = peekLineFor(p, ctx)(st.status, st.date, st.nextDate);
 	return (
 		<>
-			<b>{ctx.stages[i]}</b>
+			<b>{stageNamesFor(ctx.generalStages, ctx.doneNames, p)[i]}</b>
 			{line ? <div>{line}</div> : null}
 			<div className="thint">{text.clickForDetail}</div>
 		</>
