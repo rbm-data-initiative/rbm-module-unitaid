@@ -9,7 +9,7 @@ The dashboard follows four antimalarial medicines along the market and country a
 | Folder / file | What goes here |
 | --- | --- |
 | `page.tsx` | Server component: `generateMetadata`, the server-side read of the dataset (5-minute cache, `export const revalidate = 300`), a banner when the dataset has a format this code does not read, then `<PageContent />` |
-| `page-content.tsx` | `"use client"`: the host header band and the dashboard, with the open medicine kept in the address (`?product=`) |
+| `page-content.tsx` | `"use client"`: the photo header (`components/HostHero.tsx`) and the dashboard, with the open medicine kept in the address (`?product=`) |
 | `unsubscribe/page.tsx` | `/{locale}/unitaid/unsubscribe`, the page the subscriber emails link to |
 | `error.tsx` | What the page shows if it fails |
 | `components/` | The dashboard's React components: `pathway/`, `board/` (the medicines table), `map/`, `frame/` (header, Subscribe, Send feedback, footer), `unsubscribe/` |
@@ -27,8 +27,8 @@ The dashboard follows four antimalarial medicines along the market and country a
 
 - The browser only calls this site: the dataset is read on the server, and the three forms post to `/api/unitaid/…`, which relay them on the server.
 - `process.env` only in `lib/env.ts` and in `src/app/api/unitaid/**`; no `NEXT_PUBLIC_` variable.
-- Allowed host imports: `@/navigation`, `@/fonts`, `@/utils/server/crypto`, `@/utils/common-functions`, `@/ui/dashboard/TARequestBanner`, `@/ui/dashboard/BottlenecksBanner`, `@/ui/dashboard/Modal`, `next-intl`. The module uses none of the banners or the modal.
-- Host assets used: `/bg-programmatic-min.webp`, as the band behind the host's header.
+- Allowed host imports: `@/navigation`, `@/fonts`, `@/utils/server/crypto`, `@/utils/common-functions`, `@/ui/dashboard/TARequestBanner`, `@/ui/dashboard/BottlenecksBanner`, `@/ui/dashboard/Modal`, `next-intl`. The photo header uses the two banners; the module does not use the modal.
+- Host assets used: `/bg-programmatic-min.webp`, as the band behind the host's header on the unsubscribe page. The dashboard's photo header uses its own `public/unitaid/header-photo.webp`.
 - No user-visible string outside `i18n/`.
 - `npm run check:contract` validates all of this; CI runs the same command.
 
