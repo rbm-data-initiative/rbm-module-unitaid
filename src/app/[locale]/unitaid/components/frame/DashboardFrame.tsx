@@ -11,6 +11,15 @@ import type { FrameText } from "./text";
 import type { FrameView } from "./view";
 
 /**
+ * Subscribe for updates is switched off for now (owner's call, 6 Nov 2026:
+ * not in this phase). Only the button is left out: Subscribe.tsx, its
+ * messages, the /api/unitaid/subscribe relay and the unsubscribe page all
+ * stay, so existing subscribers can still unsubscribe and turning it back on
+ * is setting this to true. Send feedback does not read it.
+ */
+const SUBSCRIBE_SHOWN = false;
+
+/**
  * The dashboard's frame and its root element: `.launch-dashboard`, the one
  * element styles/launch-dashboard.css is fenced under, standing in for the
  * static page's <body>. Inside it, in the page's order:
@@ -59,7 +68,7 @@ export function DashboardFrame({
 					updated={view.updated}
 					csv={view.csv}
 					subscribe={
-						forms
+						forms && SUBSCRIBE_SHOWN
 							? { endpoint: forms.subscribe, open: subOpen, onOpenChange: onSubOpenChange }
 							: null
 					}

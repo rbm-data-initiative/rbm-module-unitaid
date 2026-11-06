@@ -40,7 +40,7 @@ All four are read on the server only, in `lib/env.ts`. The values are sent priva
 | `UNITAID_FORMS_URL` | yes, for the forms | `https://<forms service>/functions/v1` | Base address of the LAUNCH forms service, https, no trailing slash |
 | `UNITAID_FORMS_TOKEN` | yes, for the forms | `<at least 32 characters>` | Token this site's server sends to the forms service |
 
-Without both forms variables the page still works, but Subscribe is hidden, Send feedback is not connected and the three relays answer 503. The page checks them each time it is rendered (at build, then at each 5-minute refresh), so set them before the build. The tokens are read on every request, so changing one needs no new build.
+Without both forms variables the page still works, but Send feedback is not connected and the three relays answer 503. (Subscribe for updates is switched off for now whatever these are set to; see section 9.) The page checks them each time it is rendered (at build, then at each 5-minute refresh), so set them before the build. The tokens are read on every request, so changing one needs no new build.
 
 ## 4. New dependencies
 
@@ -87,6 +87,7 @@ Total 2.5 MB.
 - **Notifications:** the sender is not built yet, and the store is in memory (section 6).
 - **Tests:** the module's test suite is kept by the LAUNCH team and run there against this module's code; none are in this repository yet.
 - **Procurement figures (v1.2.0):** withheld at Unitaid's request until they are confirmed. The procurement card lists the presentations bought and says the figures will be added later; they return in a later release.
+- **Subscribe for updates (v1.4.0):** switched off for now; it is not part of this phase. The page shows Download CSV and Send feedback but no Subscribe button. The `POST /api/unitaid/subscribe` and `/unsubscribe` routes and the page `/{locale}/unitaid/unsubscribe` stay, so anyone already subscribed can still unsubscribe from the link in their emails. It returns in a later release (one switch, `SUBSCRIBE_SHOWN` in `components/frame/DashboardFrame.tsx`).
 - **Status labels (v1.0):** the pathway shows each step's symbol and colour without the words "Delayed" or "In progress", and no barrier text, until RBM and Unitaid agree a status taxonomy.
 - **Phones.** The dashboard needs about 330 px of width (about 340 px in French). Inside the host frame, the collapsed sidebar keeps a 60 px strip on the left, so on phones narrower than about 400 px the page is wider than the screen and scrolls sideways (in Chrome: English fits at 390 px, French does not; all three languages overflow at 360 px). On a phone the sidebar also opens by default and takes most of the screen. To discuss with the internal team: whether the strip and the open sidebar are kept on phones in production.
 - **Browsers:** checked in Chrome only (desktop at 1440 px, phones at 360 and 390 px); not yet on Safari or an iPhone.
