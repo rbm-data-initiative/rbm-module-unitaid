@@ -29,7 +29,6 @@ export function DashboardFrame({
 	text,
 	view,
 	formsEnabled = false,
-	logoSrc,
 	children,
 	outside,
 }: {
@@ -39,8 +38,6 @@ export function DashboardFrame({
 	view: FrameView;
 	/** formsEnabled() (lib/env.ts), worked out on the server; false or missing: Subscribe hidden, Send feedback not connected */
 	formsEnabled?: boolean;
-	/** where the host serves assets/unitaid-logo.svg */
-	logoSrc: string;
 	children?: ReactNode;
 	outside?: ReactNode;
 }) {
@@ -55,7 +52,6 @@ export function DashboardFrame({
 				<Header
 					text={text.header}
 					subscribeText={text.subscribe}
-					logoSrc={logoSrc}
 					updated={view.updated}
 					csv={view.csv}
 					subscribe={

@@ -12,7 +12,8 @@
 // had run.
 import { useCallback, useEffect, useState } from "react";
 import { Dashboard, type DashboardProps } from "@/app/[locale]/unitaid/components/Dashboard";
-import { HostHeaderBand } from "@/app/[locale]/unitaid/components/HostHeaderBand";
+import { frameText } from "@/app/[locale]/unitaid/components/frame/text";
+import { HostHero } from "@/app/[locale]/unitaid/components/HostHero";
 import "./styles/launch-dashboard.css";
 
 const PARAM = "product";
@@ -44,7 +45,7 @@ export default function PageContent(
 
 	return (
 		<>
-			<HostHeaderBand />
+			<HostHero text={frameText(props.locale).header} />
 			<Dashboard {...props} initialProduct={product} onProductChange={onProductChange} />
 		</>
 	);

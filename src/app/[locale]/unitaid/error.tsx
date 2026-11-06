@@ -8,19 +8,20 @@
 import { useParams } from "next/navigation";
 import { launchFont } from "@/app/[locale]/unitaid/fonts";
 import { Banner } from "@/app/[locale]/unitaid/components/frame/Banner";
-import { HostHeaderBand } from "@/app/[locale]/unitaid/components/HostHeaderBand";
+import { HostHero } from "@/app/[locale]/unitaid/components/HostHero";
 import { frameText } from "@/app/[locale]/unitaid/components/frame/text";
 import { isLocale } from "@/app/[locale]/unitaid/utils/locales";
 import "./styles/launch-dashboard.css";
 
 export default function DashboardError() {
 	const { locale } = useParams<{ locale: string }>();
+	const text = frameText(isLocale(locale) ? locale : "en");
 	return (
 		<>
-			<HostHeaderBand />
+			<HostHero text={text.header} />
 			<div className={`launch-dashboard ${launchFont.variable}`}>
 				<div className="wrap" role="alert">
-					<Banner kind="fail" text={frameText(isLocale(locale) ? locale : "en").banner} />
+					<Banner kind="fail" text={text.banner} />
 				</div>
 			</div>
 		</>

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { DashboardAssets } from "@/app/[locale]/unitaid/components/Dashboard";
 import { Banner } from "@/app/[locale]/unitaid/components/frame/Banner";
-import { HostHeaderBand } from "@/app/[locale]/unitaid/components/HostHeaderBand";
+import { HostHero } from "@/app/[locale]/unitaid/components/HostHero";
 import { frameText } from "@/app/[locale]/unitaid/components/frame/text";
 import { frameView } from "@/app/[locale]/unitaid/components/frame/view";
 import { getDashboard } from "@/app/[locale]/unitaid/lib/data";
@@ -21,7 +21,6 @@ export const revalidate = 300;
 
 // The dashboard's files, served from public/unitaid/.
 const ASSETS: DashboardAssets = {
-	logo: "/unitaid/unitaid-logo.svg",
 	whoEmblem: "/unitaid/who-emblem.svg",
 	mapShapes: "/unitaid/world-shapes.json",
 	mapWorker: "/unitaid/maplibre-gl-worker.mjs",
@@ -62,7 +61,7 @@ export default async function Page({ params }: ParamsProps) {
 			return (
 				// in its own root: there is no data for the frame to draw
 				<>
-					<HostHeaderBand />
+					<HostHero text={frameText(locale).header} />
 					<div className={`launch-dashboard ${launchFont.variable}`}>
 						<div className="wrap" role="status">
 							<Banner kind="schema" text={frameText(locale).banner} />
