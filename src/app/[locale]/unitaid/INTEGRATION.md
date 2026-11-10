@@ -99,7 +99,7 @@ Files under `fonts/files/` (woff2, max 1 MB each), declared in `fonts/index.ts`.
 
 | Family | Weights / styles | Licence | Source |
 | --- | --- | --- | --- |
-| Source Sans 3 (Unitaid's brand typeface) | Variable font, upright and italic, weights 200–900 (the styles use 400–800); `source-sans-3-upright.woff2` 166 KB, `source-sans-3-italic.woff2` 135 KB | SIL Open Font License 1.1 (`fonts/SourceSans3-OFL.md`) | Adobe, release 3.052: https://github.com/adobe-fonts/source-sans (`WOFF2/VF`) |
+| Source Sans 3 (Unitaid's brand typeface) | Variable font, upright and italic, weights 200–900 (since v1.5.0 the styles use only the brand sheet's weights: 400 Regular, 600 SemiBold, 700 Bold; Arial is the fallback); `source-sans-3-upright.woff2` 166 KB, `source-sans-3-italic.woff2` 135 KB | SIL Open Font License 1.1 (`fonts/SourceSans3-OFL.md`) | Adobe, release 3.052: https://github.com/adobe-fonts/source-sans (`WOFF2/VF`) |
 
 ## 11. Delivery checklist
 

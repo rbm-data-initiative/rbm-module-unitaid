@@ -64,7 +64,7 @@
 	font-weight: revert;
 }
 .launch-dashboard :where(code, kbd, samp, pre) {
-	font-family: revert;
+	font-family: inherit; /* Unitaid's typeface, not monospace (brand sheet, 10 Nov 2026) */
 	font-feature-settings: revert;
 	font-variation-settings: revert;
 	font-size: revert;
@@ -296,7 +296,7 @@
 	display: block;
 	margin-bottom: 0;
 	font-size: 13.5px;
-	font-weight: 750;
+	font-weight: 700;
 	letter-spacing: -.01em;
 	color: var(--warn-text);
 }
@@ -315,7 +315,7 @@
 	justify-content: center;
 	flex: none;
 	font-size: 11px;
-	font-weight: 800;
+	font-weight: 700;
 }
 .launch-dashboard .dot.done {
 	background: var(--good);
@@ -365,7 +365,7 @@
 	background: var(--ink);
 	color: #fff;
 	font-size: 11px;
-	font-weight: 750;
+	font-weight: 700;
 	line-height: 20px;
 	font-variant-numeric: tabular-nums;
 }
@@ -945,7 +945,7 @@
 }
 .launch-dashboard .chip {
 	font-size: 11px;
-	font-weight: 650;
+	font-weight: 600;
 	letter-spacing: .04em;
 	text-transform: uppercase;
 	padding: 2.5px 8px;
@@ -1003,7 +1003,7 @@
 }
 .launch-dashboard .l1t {
 	font-size: 12.5px;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink-2);
 }
 /* The view switch: equal-weight buttons, timeline first (30 Sep 2026).
@@ -1098,7 +1098,7 @@
 	align-items: center;
 	gap: 4px;
 	font-size: 12.5px;
-	font-weight: 650;
+	font-weight: 600;
 	line-height: 1.4;
 	border-radius: 999px;
 	padding: 2px 10px;
@@ -1106,7 +1106,7 @@
 }
 .launch-dashboard .ysp i {
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 400;
 }
 .launch-dashboard .ysp.sm {
 	font-size: 11.5px;
@@ -1123,11 +1123,11 @@
 .launch-dashboard .ysp.none {
 	background: var(--surface-2);
 	color: var(--ink-3);
-	font-weight: 500;
+	font-weight: 400;
 }
 .launch-dashboard .ysb-none {
 	font-size: 11.5px;
-	font-weight: 500;
+	font-weight: 400;
 	color: var(--ink-3);
 	line-height: 1.3;
 }
@@ -1210,7 +1210,7 @@
 	padding-block: 8px;
 }
 .launch-dashboard .ystable tbody th {
-	font-weight: 500;
+	font-weight: 600;
 	color: var(--ink);
 }
 .launch-dashboard .ystable td {
@@ -1741,13 +1741,13 @@
 }
 .launch-dashboard .stage.cur .lbl {
 	color: var(--ink);
-	font-weight: 650;
+	font-weight: 600;
 }
 /* year a gate was reached, under its label — also the value plotted on the
      real-year timeline view, so this and that stay honest twins */
 .launch-dashboard .stage .syear {
 	font-size: 11px;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink-2);
 	margin-top: 3px;
 	font-variant-numeric: tabular-nums;
@@ -2242,7 +2242,7 @@
 }
 .launch-dashboard .gw-step {
 	font-size: 12px;
-	font-weight: 650;
+	font-weight: 600;
 	letter-spacing: .04em;
 	text-transform: uppercase;
 	color: var(--ink-3);
@@ -2250,7 +2250,7 @@
 .launch-dashboard .gw-head h3 {
 	margin: 0;
 	font-size: 17px;
-	font-weight: 750;
+	font-weight: 700;
 	letter-spacing: -.005em;
 }
 .launch-dashboard .gw-head .gp-close {
@@ -2414,7 +2414,7 @@
 .launch-dashboard #tip .tlvl .tmark {
 	width: 9px;
 	flex: none;
-	font-weight: 800;
+	font-weight: 700;
 	text-align: center;
 }
 .launch-dashboard #tip .tlvl.off {
@@ -2476,7 +2476,7 @@
 }
 .launch-dashboard .card .big {
 	font-size: 24px;
-	font-weight: 750;
+	font-weight: 700;
 	font-variant-numeric: tabular-nums;
 }
 .launch-dashboard .card .sub {
@@ -2591,7 +2591,7 @@
 	align-items: center;
 	gap: 5px;
 	font-size: 12.5px;
-	font-weight: 650;
+	font-weight: 600;
 	padding: 2px 9px;
 	border-radius: 999px;
 	white-space: nowrap;
@@ -2675,7 +2675,7 @@
 .launch-dashboard .card .proc-lh {
 	margin: 14px 0 8px;
 	font-size: 14px;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink);
 }
 .launch-dashboard .proc-names tbody th {
@@ -2810,7 +2810,7 @@
 .launch-dashboard .updates .up {
 	flex: none;
 	width: 84px;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink);
 }
 
@@ -2841,7 +2841,7 @@
 }
 .launch-dashboard .srclist a {
 	color: var(--accent);
-	font-weight: 650;
+	font-weight: 600;
 	text-decoration: none;
 }
 .launch-dashboard .srclist a:hover,
@@ -2850,7 +2850,7 @@
 	text-underline-offset: 2px;
 }
 .launch-dashboard .srclist .srcname {
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink-2);
 }
 .launch-dashboard .srclist li > span {
@@ -2867,7 +2867,7 @@
 	color: var(--ink-2);
 }
 .launch-dashboard .srclist .srcraw code {
-	font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+	font-family: inherit;
 	font-size: 12px;
 	overflow-wrap: anywhere;
 	word-break: break-all;
@@ -3043,7 +3043,7 @@
 .launch-dashboard .glossary-panel .gt {
 	flex: none;
 	width: 84px;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink);
 }
 
@@ -3150,7 +3150,7 @@
 	padding: 5px 14px;
 	font: inherit;
 	font-size: 13px;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink-2);
 	cursor: pointer;
 }
@@ -3249,7 +3249,7 @@
 .launch-dashboard .mft-panel .mft-h {
 	margin: 0 0 10px;
 	font-size: 12px;
-	font-weight: 750;
+	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: .05em;
 	color: var(--ink-2);
@@ -3273,7 +3273,7 @@
 }
 .launch-dashboard .mft-donut .ct-n {
 	font-size: 26px;
-	font-weight: 750;
+	font-weight: 700;
 	fill: var(--ink);
 	font-variant-numeric: tabular-nums;
 }
@@ -3298,7 +3298,7 @@
 .launch-dashboard .mft-donut .rows b {
 	font-variant-numeric: tabular-nums;
 	color: var(--ink);
-	font-weight: 750;
+	font-weight: 700;
 }
 .launch-dashboard .mft-donut .rows .off,
 .launch-dashboard .mft-donut .rows .off b {
@@ -3318,7 +3318,7 @@
 }
 .launch-dashboard .mft-grp {
 	font-size: 11.5px;
-	font-weight: 750;
+	font-weight: 700;
 	letter-spacing: .05em;
 	text-transform: uppercase;
 	color: var(--ink-3);
@@ -3350,7 +3350,7 @@
 .launch-dashboard .mft-pchip.yes {
 	background: var(--good-soft);
 	color: var(--good-text);
-	font-weight: 650;
+	font-weight: 600;
 }
 .launch-dashboard .mft-note {
 	font-size: 11.5px;
@@ -3373,7 +3373,7 @@
 .launch-dashboard .det-tabs button {
 	font: inherit;
 	font-size: 13px;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink-2);
 	background: none;
 	border: 0;
@@ -3455,7 +3455,7 @@
 }
 .launch-dashboard .det-big {
 	font-size: 26px;
-	font-weight: 750;
+	font-weight: 700;
 	line-height: 1.15;
 	color: var(--ink);
 	margin-bottom: 6px;
@@ -3678,7 +3678,7 @@
 	margin: 0;
 	font-size: 18px;
 	line-height: 1.2;
-	font-weight: 750;
+	font-weight: 700;
 	color: var(--ink);
 	text-transform: none;
 	letter-spacing: 0;
@@ -3934,7 +3934,7 @@
 }
 .launch-dashboard .map-legend .ct {
 	font-variant-numeric: tabular-nums;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink);
 }
 .launch-dashboard .map-legend .ct.zero {
@@ -4168,7 +4168,7 @@
 	padding: 6px 13px;
 	font: inherit;
 	font-size: 13px;
-	font-weight: 650;
+	font-weight: 600;
 	cursor: pointer;
 }
 .launch-dashboard .dl-btn:hover {
@@ -4186,7 +4186,7 @@
 	padding: 6px 13px;
 	font: inherit;
 	font-size: 13px;
-	font-weight: 650;
+	font-weight: 600;
 	cursor: pointer;
 }
 .launch-dashboard .sub-btn:hover {
@@ -4334,7 +4334,7 @@
 }
 .launch-dashboard .subfield label {
 	font-size: 12px;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink-2);
 }
 .launch-dashboard .sub-opt {
@@ -4362,7 +4362,7 @@
 	padding: 8px 15px;
 	font: inherit;
 	font-size: 13px;
-	font-weight: 650;
+	font-weight: 600;
 	cursor: pointer;
 }
 .launch-dashboard .sub-go:focus-visible {
@@ -4418,7 +4418,7 @@
 	margin: 0 0 12px;
 	font-size: 22px;
 	line-height: 1.3;
-	font-weight: 750;
+	font-weight: 700;
 	color: var(--ink);
 }
 .launch-dashboard .unsub-title:focus {
@@ -4701,12 +4701,18 @@
 	--ph-cty-ink: #212e92;
 	--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
+/* Unitaid's brand sheet (10 Nov 2026): Source Sans 3 in Light 300, Regular
+   400, SemiBold 600 or Bold 700 only; Arial is the system font (fallback). */
 .launch-dashboard,
 .launch-dashboard button,
 .launch-dashboard input,
 .launch-dashboard select,
 .launch-dashboard textarea {
 	font-family: var(--font-launch), "Source Sans 3", Arial, sans-serif;
+}
+/* MapLibre sets Helvetica Neue on the map (its zoom hint, controls): Source Sans 3 too. */
+.launch-dashboard .maplibregl-map {
+	font-family: inherit;
 }
 /* headings in the brand's Bold, navy */
 .launch-dashboard .viz h2,
