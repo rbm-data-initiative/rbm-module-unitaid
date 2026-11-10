@@ -12,7 +12,7 @@ The module is the LAUNCH Malaria Product Launch Dashboard: four antimalarial med
 | i18n namespace | `Unitaid` |
 | Final URL | `/{locale}/unitaid`, plus `/{locale}/unitaid/unsubscribe` (the page the subscriber emails link to) |
 | API routes | `GET /api/unitaid/data?dataset=en\|fr\|pt`, `POST /api/unitaid/notifications`, `POST /api/unitaid/subscribe`, `POST /api/unitaid/feedback`, `POST /api/unitaid/unsubscribe` |
-| Delivered version | `v1.4.0` |
+| Delivered version | `v1.5.0` |
 
 `GET /api/unitaid/data` is a public contract (the internal team's planned AI agent may read it): one language of the dataset as JSON, cached on the server for 5 minutes, the same data the page shows. It answers 400 for a missing or unknown `dataset` and 502 when the source cannot be read. The page does not call it; it reads the data on the server itself. Since v1.2.0 (Unitaid, 5 Nov 2026), ASPY's and DHA–PPQ's procurement figures are withheld until they are confirmed: their `detail.volume` is `null`, and a new field, `detail.procurement.presentations`, lists the presentations bought, with no figures. Since v1.3.0 (6 Nov 2026), `stages[1]` is "Stringent Regulatory Approval (SRA)", and two new optional fields give a step's name on a medicine that has not completed it: `stageInfo[i].pendingName` (stage 2: "Stringent Regulatory Review (SRA)") and, for one medicine, `products[].stages[i].pendingName`, which wins (Ganaplacide–lumefantrine: "Stringent Health Authority Review (SRA)"). The medicine with id `ganlum` is now named "Ganaplacide–lumefantrine" (was "GanLum"), with `inn` "KLU156".
 
@@ -72,14 +72,14 @@ Total 2.5 MB.
 | `data/dashboard.en.json`, `.fr.json`, `.pt.json` | Bundled copy of the dataset (published 6 Nov 2026), used only when the source cannot be read and nothing is cached (section 9) | 146 KB, 162 KB, 156 KB |
 | `world-shapes.json` | Country shapes for the map | 1,542 KB |
 | `maplibre-gl-worker.mjs` | MapLibre's worker, version 6.14.0; must match `maplibre-gl` | 496 KB |
-| `header-photo.webp` | Photo behind the page header (since v1.4.0): the photo Unitaid chose, recoloured in the blue of the host's `/bg-programmatic-min.webp` | 43 KB |
-| `unitaid-logo-white.svg` | "Powered by" logo in the page header, Unitaid's official artwork with the wordmark in white (since v1.4.0; replaces `unitaid-logo.svg`) | 10 KB |
+| `header-graphic.webp` | Graphic behind the page header (v1.5.0): the graphic Unitaid sent, under a layer drawn by the page in Unitaid Navy (`#212e92` at 70%). Replaces `header-photo.webp`, the v1.4.0 photo | 18 KB |
+| `unitaid-logo-tagline-white.svg` | Logo on the left of the page header, 350 px wide, linking to unitaid.org (v1.5.0): Unitaid's official all-white logo with its tagline, `UNITAID_Logo_tagline_RGB_White.svg` from Unitaid's logo pack, unchanged. Replaces `unitaid-logo-white.svg`, the v1.4.0 "Powered by" logo | 10 KB |
 | `who-emblem.svg` | WHO emblem on the WHO steps of the pathway | 10 KB |
 
 ## 8. Optional
 
 - Localised URL (`/pt/...`, `/fr/...`): _not requested_. If requested, add to `pathnames` in the host's `src/config.ts`: `'/unitaid': { en: '/unitaid', fr: '...', pt: '...' }`.
-- Standalone mode (no sidebar/header): _no_. Since v1.4.0 (Unitaid, 6 Nov 2026) the dashboard opens with its own photo header (`components/HostHero.tsx`): it starts at the top of the page, behind the host's transparent header, and carries the title, the description, "Powered by" Unitaid and the host's two QR banners (`@/ui/dashboard/BottlenecksBanner` and `TARequestBanner`, used unchanged). Nothing outside the module changes; the host's `/bg-programmatic-min.webp` is not replaced. The unsubscribe page keeps the host's header background in the top 56 px (`components/HostHeaderBand.tsx`).
+- Standalone mode (no sidebar/header): _no_. Since v1.4.0 (Unitaid, 6 Nov 2026) the dashboard opens with its own header (`components/HostHero.tsx`): it starts at the top of the page, behind the host's transparent header. Since v1.5.0 (Unitaid, 10 and 11 Nov 2026) it follows Unitaid's brand guide (brandpad.io/unitaid): Unitaid's graphic under a Unitaid Navy layer; Unitaid's white logo with its tagline on the left (350 px; on a phone it fills the column; it replaces the v1.4.0 "Powered by" Unitaid), with the clear space the guide asks for around it (the height of its hummingbird, 70 px at 350 px); a thin white divider; the title and the description, left-aligned, in Unitaid's typeface, Source Sans 3 (the module's own font, section 10; title up to 36 px bold, description 16 px; the English title stays on one line); and, on the right, the host's two QR banners (`@/ui/dashboard/BottlenecksBanner` and `TARequestBanner`, used unchanged, in the host's colours; on this page their text is set in Source Sans 3 by the module's wrapper). Logo, divider and title sit in one row when the header is at least 1520 px wide (a container query, so it follows the header's width whether the host's menu is open or closed); narrower, the title goes under the logo. Nothing outside the module changes; the host's `/bg-programmatic-min.webp` is not replaced. The unsubscribe page keeps the host's header background in the top 56 px (`components/HostHeaderBand.tsx`).
 - Typed `Link`: the host only needs `'/unitaid': '/unitaid'` in `pathnames` if it uses `Link`/`useRouter` from `@/navigation` with that destination.
 
 ## 9. Limitations and pending items
@@ -99,7 +99,7 @@ Files under `fonts/files/` (woff2, max 1 MB each), declared in `fonts/index.ts`.
 
 | Family | Weights / styles | Licence | Source |
 | --- | --- | --- | --- |
-| Source Sans 3 (Unitaid's brand typeface) | Variable font, upright and italic, weights 200–900 (the styles use 400–800); `source-sans-3-upright.woff2` 166 KB, `source-sans-3-italic.woff2` 135 KB | SIL Open Font License 1.1 (`fonts/SourceSans3-OFL.md`) | Adobe, release 3.052: https://github.com/adobe-fonts/source-sans (`WOFF2/VF`) |
+| Source Sans 3 (Unitaid's brand typeface) | Variable font, upright and italic, weights 200–900 (since v1.5.0 the styles use only the brand sheet's weights: 400 Regular, 600 SemiBold, 700 Bold; Arial is the fallback); `source-sans-3-upright.woff2` 166 KB, `source-sans-3-italic.woff2` 135 KB | SIL Open Font License 1.1 (`fonts/SourceSans3-OFL.md`) | Adobe, release 3.052: https://github.com/adobe-fonts/source-sans (`WOFF2/VF`) |
 
 ## 11. Delivery checklist
 

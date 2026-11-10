@@ -44,7 +44,7 @@
 	color: var(--accent-ink, #fff);
 	font-family: inherit;
 	font-size: 13px;
-	font-weight: 650;
+	font-weight: 600;
 	letter-spacing: .01em;
 	line-height: 1;
 	cursor: pointer;
@@ -70,7 +70,7 @@
 /* footer link */
 .launch-dashboard .report-link {
 	color: var(--accent);
-	font-weight: 650;
+	font-weight: 600;
 	text-decoration: underline;
 	text-underline-offset: 2px;
 	cursor: pointer;
@@ -171,7 +171,7 @@
 	display: block;
 	margin: 0 0 5px;
 	font-size: 12px;
-	font-weight: 650;
+	font-weight: 600;
 	color: var(--ink-2);
 }
 .launch-dashboard .ri-opt {
@@ -280,7 +280,7 @@
 	padding: 8px 15px;
 	font-family: inherit;
 	font-size: 13px;
-	font-weight: 650;
+	font-weight: 600;
 	cursor: pointer;
 }
 .launch-dashboard .ri-btn:focus-visible {
@@ -360,7 +360,8 @@
 	color: var(--ink);
 	letter-spacing: .05em;
 	font-size: 13px;
-	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-family: inherit;
+	font-variant-numeric: tabular-nums;
 }
 .launch-dashboard .ri-again {
 	background: none;
@@ -369,7 +370,7 @@
 	color: var(--accent);
 	font-family: inherit;
 	font-size: 12.5px;
-	font-weight: 650;
+	font-weight: 600;
 	text-decoration: underline;
 	text-underline-offset: 2px;
 	cursor: pointer;
