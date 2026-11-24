@@ -12,7 +12,7 @@ The module is the LAUNCH Malaria Product Launch Dashboard: four antimalarial med
 | i18n namespace | `Unitaid` |
 | Final URL | `/{locale}/unitaid`, plus `/{locale}/unitaid/unsubscribe` (the page the subscriber emails link to) |
 | API routes | `GET /api/unitaid/data?dataset=en\|fr\|pt`, `POST /api/unitaid/notifications`, `POST /api/unitaid/subscribe`, `POST /api/unitaid/feedback`, `POST /api/unitaid/unsubscribe` |
-| Delivered version | `v1.5.1` |
+| Delivered version | `v1.5.2` |
 
 `GET /api/unitaid/data` is a public contract (the internal team's planned AI agent may read it): one language of the dataset as JSON, cached on the server for 5 minutes, the same data the page shows. It answers 400 for a missing or unknown `dataset` and 502 when the source cannot be read. The page does not call it; it reads the data on the server itself. Since v1.2.0 (Unitaid, 5 Nov 2026), ASPY's and DHA–PPQ's procurement figures are withheld until they are confirmed: their `detail.volume` is `null`, and a new field, `detail.procurement.presentations`, lists the presentations bought, with no figures. Since v1.3.0 (6 Nov 2026), `stages[1]` is "Stringent Regulatory Approval (SRA)", and two new optional fields give a step's name on a medicine that has not completed it: `stageInfo[i].pendingName` (stage 2: "Stringent Regulatory Review (SRA)") and, for one medicine, `products[].stages[i].pendingName`, which wins (Ganaplacide–lumefantrine: "Stringent Health Authority Review (SRA)"). The medicine with id `ganlum` is now named "Ganaplacide–lumefantrine" (was "GanLum"), with `inn` "KLU156".
 

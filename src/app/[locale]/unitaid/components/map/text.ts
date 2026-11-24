@@ -117,7 +117,6 @@ export interface MapText {
 	peersTitle: string; // {stage}
 	morePeers: string; // {n}
 
-	clickForDetails: string;
 	tipStatus: string; // {status}
 }
 
@@ -273,7 +272,6 @@ export function mapText(locale: Locale): MapText {
 		peersTitle: p.sameStage,
 		morePeers: rename(p.moreInCountriesTab, { count: "n" }),
 
-		clickForDetails: m.tooltip.mapClickForDetails,
 		// the tooltip writes the medicine's name, then this
 		tipStatus: around(m.tooltip.dataStatus, "medicine")[1],
 	};

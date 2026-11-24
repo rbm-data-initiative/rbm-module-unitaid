@@ -3776,10 +3776,6 @@
 .launch-dashboard .det-chip:hover {
 	border-color: var(--accent);
 }
-.launch-dashboard .det-cta {
-	margin-top: 4px;
-	font-weight: 700;
-}
 .launch-dashboard .mapwrap {
 	position: relative;
 }

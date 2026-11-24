@@ -21,7 +21,14 @@ function PolicyLine({ line, text }: { line: ReturnType<typeof tipPolicyLine>; te
 	);
 }
 
-/** A tracked country hovered on the map. */
+/**
+ * A tracked country hovered on the map. No "Click for details ›" line since
+ * 24 Nov 2026: the hint follows the pointer and takes no clicks, so the line
+ * read as a link that could not be clicked (clicking where it was opened the
+ * country under it). A click on the country opens its page in the Detail
+ * panel beside the map. Its key, tooltip.mapClickForDetails, left the message
+ * files with it, as it left LAUNCH's i18n/ui.en.json, their source.
+ */
 export function MapTipBody({
 	tip,
 	text,
@@ -34,7 +41,6 @@ export function MapTipBody({
 				{stageLabel(text, tip.stage)}
 			</div>
 			<PolicyLine line={tip.policy} text={text} />
-			<div className="tprod det-cta">{text.clickForDetails}</div>
 		</>
 	);
 }
